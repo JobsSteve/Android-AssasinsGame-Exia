@@ -3,4 +3,5 @@
 project.properties
 proguard-project.txt
 *.apk
-\bin\*
+bin/
+bin/*
