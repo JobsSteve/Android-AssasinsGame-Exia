@@ -1,0 +1,35 @@
+<resources>
+
+    <string name="app_name">Assassins Exia</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_start_screen">Start Screen</string>
+    <string name="user_name_string">Username</string>
+    <string name="password_string">Password</string>
+    <string name="log_in_button">Log In</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="app_logo_description">Application Logo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="pseudo_text">Pseudo</string>
+    <string name="parties_en_cours_button_main">Parties En Cours</string>
+    <string name="new_game_button_string">Créer une Partie</string>
+    <string name="join_button_string">Rejoindre partie</string>
+    <string name="stats_button">Statistiques</string>
+    <string name="rules_button_string">Règles</string>
+    <string name="legal_button_string">Informations légales</string>
+    <string name="contrats_actifs_button_string">Contrats Actifs</string>
+    <string name="partie_attente_button_string">Parties en attente</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_activity_parties_en_cours">PartiesEnCours</string>
+    <string name="NameOfGame">Game XX</string>
+    <string name="game_desctiption_string">Game Description</string>
+    <string name="game_info_string">Game Information</string>
+    <string name="nb_participants_string">Number of Players</string>
+    <string name="twitter_tag_string">Twitter Tag</string>
+    <string name="survivors_left_string">Survivors left</string>
+    <string name="nb_teams_string">Nb Teams</string>
+    <string name="teams_set_string">Teams</string>
+
+</resources>

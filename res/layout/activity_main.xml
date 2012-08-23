@@ -1,0 +1,115 @@
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_column="1"
+                android:layout_gravity="left|bottom"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="6dp"
+                android:layout_row="0"
+                android:layout_rowSpan="2" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_gravity="left"
+                android:layout_marginBottom="17dp"
+                android:layout_marginLeft="16dp"
+                android:layout_row="1"
+                android:text="@string/pseudo_text"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_gravity="left"
+                android:layout_row="2"
+                android:onClick="goToPartiesEnCours"
+                android:text="@string/parties_en_cours_button_main" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="3"
+                android:text="@string/new_game_button_string" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="4"
+                android:text="@string/join_button_string" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="5"
+                android:text="@string/stats_button" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="6"
+                android:text="@string/rules_button_string" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="7"
+                android:text="@string/legal_button_string" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="8"
+                android:text="@string/contrats_actifs_button_string" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="4"
+                android:layout_row="9"
+                android:text="@string/partie_attente_button_string" />
+        </GridLayout>
+
+    </ScrollView>
