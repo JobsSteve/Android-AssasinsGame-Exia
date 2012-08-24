@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void goToPartiesEnCours(View view) {
-		Intent i = new Intent(view.getContext(), PartiesEnCours.class);
+		Intent i = new Intent(view.getContext(), RandomPagerActivity.class);
 		
 		startActivity(i);
 	}

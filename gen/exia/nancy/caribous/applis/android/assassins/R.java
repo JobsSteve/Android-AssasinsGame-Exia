@@ -45,28 +45,30 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_parties_en_cours=0x7f030001;
-        public static final int activity_start_screen=0x7f030002;
-        public static final int partie_fragment=0x7f030003;
+        public static final int activity_random_pager=0x7f030002;
+        public static final int activity_start_screen=0x7f030003;
+        public static final int partie_fragment=0x7f030004;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
         public static final int activity_parties_en_cours=0x7f060001;
-        public static final int activity_start_screen=0x7f060002;
+        public static final int activity_random_pager=0x7f060002;
+        public static final int activity_start_screen=0x7f060003;
     }
     public static final class string {
-        public static final int NameOfGame=0x7f040017;
+        public static final int NameOfGame=0x7f040014;
         public static final int app_logo_description=0x7f040007;
         public static final int app_name=0x7f040000;
         public static final int contrats_actifs_button_string=0x7f040011;
-        public static final int game_desctiption_string=0x7f040018;
-        public static final int game_info_string=0x7f040019;
+        public static final int game_desctiption_string=0x7f040015;
+        public static final int game_info_string=0x7f040016;
         public static final int hello_world=0x7f040008;
         public static final int join_button_string=0x7f04000d;
         public static final int legal_button_string=0x7f040010;
         public static final int log_in_button=0x7f040005;
         public static final int menu_settings=0x7f040001;
-        public static final int nb_participants_string=0x7f04001a;
-        public static final int nb_teams_string=0x7f04001d;
+        public static final int nb_participants_string=0x7f040017;
+        public static final int nb_teams_string=0x7f04001a;
         public static final int new_game_button_string=0x7f04000c;
         public static final int partie_attente_button_string=0x7f040012;
         public static final int parties_en_cours_button_main=0x7f04000b;
@@ -75,15 +77,13 @@ public final class R {
         public static final int rules_button_string=0x7f04000f;
         public static final int sign_in_button=0x7f040006;
         public static final int stats_button=0x7f04000e;
-        public static final int survivors_left_string=0x7f04001c;
-        public static final int teams_set_string=0x7f04001e;
+        public static final int survivors_left_string=0x7f040019;
+        public static final int teams_set_string=0x7f04001b;
         public static final int title_activity_main=0x7f040009;
-        public static final int title_activity_parties_en_cours=0x7f040016;
+        public static final int title_activity_parties_en_cours=0x7f040013;
+        public static final int title_activity_random_pager=0x7f04001c;
         public static final int title_activity_start_screen=0x7f040002;
-        public static final int title_section1=0x7f040015;
-        public static final int title_section2=0x7f040014;
-        public static final int title_section3=0x7f040013;
-        public static final int twitter_tag_string=0x7f04001b;
+        public static final int twitter_tag_string=0x7f040018;
         public static final int user_name_string=0x7f040003;
     }
     public static final class style {

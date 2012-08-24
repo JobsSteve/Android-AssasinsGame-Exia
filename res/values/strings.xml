@@ -19,9 +19,6 @@
     <string name="legal_button_string">Informations légales</string>
     <string name="contrats_actifs_button_string">Contrats Actifs</string>
     <string name="partie_attente_button_string">Parties en attente</string>
-    <string name="title_section3">Section 3</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section1">Section 1</string>
     <string name="title_activity_parties_en_cours">PartiesEnCours</string>
     <string name="NameOfGame">Game XX</string>
     <string name="game_desctiption_string">Game Description</string>
@@ -31,5 +28,6 @@
     <string name="survivors_left_string">Survivors left</string>
     <string name="nb_teams_string">Nb Teams</string>
     <string name="teams_set_string">Teams</string>
+    <string name="title_activity_random_pager">RandomPagerActivity</string>
 
 </resources>
