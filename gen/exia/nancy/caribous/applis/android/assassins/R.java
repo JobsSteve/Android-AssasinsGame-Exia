@@ -15,6 +15,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
+        public static final int biography_textview=0x7f070012;
         public static final int button1=0x7f070008;
         public static final int button2=0x7f07000a;
         public static final int button3=0x7f070003;
@@ -23,43 +24,55 @@ public final class R {
         public static final int button6=0x7f070006;
         public static final int button7=0x7f070004;
         public static final int button8=0x7f070009;
-        public static final int game_description_textView=0x7f070012;
-        public static final int game_info=0x7f070013;
-        public static final int game_name_id=0x7f070011;
+        public static final int contract_link_button=0x7f07001f;
+        public static final int game_description_textView=0x7f070018;
+        public static final int game_info=0x7f070019;
+        public static final int game_name_id=0x7f070016;
+        public static final int kill_button=0x7f070013;
         public static final int logInButton=0x7f070010;
-        public static final int menu_settings=0x7f070019;
-        public static final int nb_participants=0x7f070014;
-        public static final int nb_teams=0x7f070017;
+        public static final int menu_settings=0x7f070020;
+        public static final int nb_participants=0x7f07001a;
+        public static final int nb_teams=0x7f07001d;
         public static final int pager=0x7f07000b;
         public static final int pager_title_strip=0x7f07000c;
+        public static final int partie_privee_textview=0x7f070017;
         public static final int passwordTextBox=0x7f07000e;
         public static final int quickContactBadge1=0x7f070001;
         public static final int scrollView1=0x7f070000;
         public static final int signInButton=0x7f07000f;
-        public static final int survivors_left=0x7f070016;
-        public static final int teams_set=0x7f070018;
+        public static final int survivors_left=0x7f07001c;
+        public static final int targetPhoto=0x7f070011;
+        public static final int target_pseudo=0x7f070014;
+        public static final int teams_set=0x7f07001e;
         public static final int textView1=0x7f070002;
-        public static final int twitter_tag=0x7f070015;
+        public static final int twitter_tag=0x7f07001b;
         public static final int userNameTexBox=0x7f07000d;
+        public static final int utiliser_objet=0x7f070015;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_parties_en_cours=0x7f030001;
         public static final int activity_random_pager=0x7f030002;
-        public static final int activity_start_screen=0x7f030003;
-        public static final int partie_fragment=0x7f030004;
+        public static final int activity_show_contract=0x7f030003;
+        public static final int activity_start_screen=0x7f030004;
+        public static final int contract_fragment=0x7f030005;
+        public static final int partie_fragment=0x7f030006;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
         public static final int activity_parties_en_cours=0x7f060001;
         public static final int activity_random_pager=0x7f060002;
-        public static final int activity_start_screen=0x7f060003;
+        public static final int activity_show_contract=0x7f060003;
+        public static final int activity_start_screen=0x7f060004;
     }
     public static final class string {
         public static final int NameOfGame=0x7f040014;
         public static final int app_logo_description=0x7f040007;
         public static final int app_name=0x7f040000;
+        public static final int biography_textview_string=0x7f040022;
         public static final int contrats_actifs_button_string=0x7f040011;
+        public static final int curr_target_button=0x7f04001e;
+        public static final int declare_kill_button_string=0x7f04001f;
         public static final int game_desctiption_string=0x7f040015;
         public static final int game_info_string=0x7f040016;
         public static final int hello_world=0x7f040008;
@@ -71,9 +84,11 @@ public final class R {
         public static final int nb_teams_string=0x7f04001a;
         public static final int new_game_button_string=0x7f04000c;
         public static final int partie_attente_button_string=0x7f040012;
+        public static final int partie_privee_string=0x7f04001d;
         public static final int parties_en_cours_button_main=0x7f04000b;
         public static final int password_string=0x7f040004;
         public static final int pseudo_text=0x7f04000a;
+        public static final int pseudo_textview_string=0x7f040021;
         public static final int rules_button_string=0x7f04000f;
         public static final int sign_in_button=0x7f040006;
         public static final int stats_button=0x7f04000e;
@@ -82,9 +97,11 @@ public final class R {
         public static final int title_activity_main=0x7f040009;
         public static final int title_activity_parties_en_cours=0x7f040013;
         public static final int title_activity_random_pager=0x7f04001c;
+        public static final int title_activity_show_contract=0x7f040023;
         public static final int title_activity_start_screen=0x7f040002;
         public static final int twitter_tag_string=0x7f040018;
         public static final int user_name_string=0x7f040003;
+        public static final int user_object_button_string=0x7f040020;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;

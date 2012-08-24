@@ -29,5 +29,12 @@
     <string name="nb_teams_string">Nb Teams</string>
     <string name="teams_set_string">Teams</string>
     <string name="title_activity_random_pager">RandomPagerActivity</string>
+    <string name="partie_privee_string">Privée</string>
+    <string name="curr_target_button">Contrat en cours</string>
+    <string name="declare_kill_button_string">Déclarer kill</string>
+    <string name="user_object_button_string">Utiliser Objet</string>
+    <string name="pseudo_textview_string">Pseudo</string>
+    <string name="biography_textview_string">Biographie</string>
+    <string name="title_activity_show_contract">ShowContractActivity</string>
 
 </resources>

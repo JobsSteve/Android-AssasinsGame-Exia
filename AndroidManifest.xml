@@ -1,7 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="exia.nancy.caribous.applis.android.assassins"
+<manifest package="exia.nancy.caribous.applis.android.assassins"
     android:versionCode="1"
-    android:versionName="0.01" >
+    android:versionName="0.01" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -25,11 +24,11 @@
         </activity>
         <activity android:name="MainActivity" >
         </activity>
-        <activity android:name="PartiesEnCours" >
+        <activity android:name="RandomPagerActivity" >
         </activity>
         <activity
-            android:name=".RandomPagerActivity"
-            android:label="@string/title_activity_random_pager" >
+            android:name=".ShowContractActivity"
+            android:label="@string/title_activity_show_contract" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

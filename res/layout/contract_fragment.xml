@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<RelativeLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content" >
+	
+	    <QuickContactBadge
+	        android:id="@+id/targetPhoto"
+	        android:layout_width="64dp"
+	        android:layout_height="64dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginLeft="34dp"
+	        android:layout_marginTop="28dp" />
+		
+	    <TextView
+	        android:id="@+id/biography_textview"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/targetPhoto"
+	        android:layout_below="@+id/targetPhoto"
+	        android:layout_marginLeft="18dp"
+	        android:layout_marginTop="24dp"
+	        android:text="@string/biography_textview_string"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <TextView
+	        android:id="@+id/target_pseudo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignTop="@+id/targetPhoto"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="18dp"
+	        android:text="@string/pseudo_textview_string"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <Button
+	        android:id="@+id/kill_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="false"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="300dp"
+	        android:text="@string/declare_kill_button_string" />
+
+	    <Button
+	        android:id="@+id/utiliser_objet"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="false"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginBottom="62dp"
+	        android:layout_marginTop="350dp"
+	        android:text="@string/user_object_button_string" />
+	
+	</RelativeLayout>
+
+</ScrollView>

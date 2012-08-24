@@ -1,5 +1,6 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -43,7 +44,6 @@ public class RandomPagerActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-
 	}
 
 	@Override
@@ -88,6 +88,13 @@ public class RandomPagerActivity extends FragmentActivity {
 				return "Partie 2";
 			}
 		}
+	}
+	
+	public void buttonCurrContractPress(View view){
+		// On appelle le détail du contrat
+		Intent intent = new Intent(view.getContext(), ShowContractActivity.class);
+		
+		startActivity(intent);
 	}
 
 	/**

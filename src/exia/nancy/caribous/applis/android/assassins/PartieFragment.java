@@ -1,5 +1,6 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,13 @@ public class PartieFragment extends Fragment {
 
 	public void setContent() {
 		// Appeler avec un objet partie et set le contenu du fragment
+	}
+	
+	public void buttonCurrContractPress(View view){
+		// On appelle le détail du contrat
+		Intent intent = new Intent(view.getContext(), ShowContractInfo.class);
+		
+		startActivity(intent);
 	}
 
 }
