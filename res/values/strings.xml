@@ -41,5 +41,7 @@
     <string name="prenom_textbox">Prenom</string>
     <string name="location_text_view_string">Location</string>
     <string name="google_maps_api_key">0UdwCEOLoWCUwNFjDgmZXn842wBLoQ0x23Mr8Wg</string>
+    <string name="pays_text_string">Pays</string>
+    <string name="terminer_button">Terminer</string>
 
 </resources>

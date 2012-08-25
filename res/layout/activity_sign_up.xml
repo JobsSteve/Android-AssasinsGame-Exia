@@ -11,16 +11,17 @@
     <RelativeLayout
         android:id="@+id/location_textview"
         android:layout_width="fill_parent"
-        android:layout_height="443dp" >
+        android:layout_height="wrap_content" >
 
         <QuickContactBadge
             android:id="@+id/photo_textedit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="36dp" />
+            android:layout_marginTop="36dp"
+            android:onClick="selectPhoto" />
 
         <EditText
             android:id="@+id/nomTextEdit"
@@ -78,6 +79,26 @@
             android:layout_below="@+id/password_textedit"
             android:ems="10"
             android:hint="@string/location_text_view_string" />
+
+        <EditText
+            android:id="@+id/pays_text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/location_text_edit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/location_text_edit"
+            android:ems="10"
+            android:hint="@string/pays_text_string" />
+
+        <Button
+            android:id="@+id/button_finish_registration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/pays_text_edit"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="34dp"
+            android:text="@string/terminer_button" />
 
     </RelativeLayout>
 

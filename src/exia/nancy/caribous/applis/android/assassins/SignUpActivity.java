@@ -3,16 +3,29 @@ package exia.nancy.caribous.applis.android.assassins;
 import java.io.BufferedInputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
 
 public class SignUpActivity extends Activity {
 
@@ -23,22 +36,31 @@ public class SignUpActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 
-		// Location automatique
-		LocationManager loma = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-		Criteria criteria = new Criteria();
-		criteria.setSpeedAccuracy(Criteria.NO_REQUIREMENT);
-		criteria.setPowerRequirement(Criteria.POWER_LOW);
-		criteria.setAltitudeRequired(false);
-		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-		String provider = loma.getBestProvider(criteria, false);
-		location = loma.getLastKnownLocation(provider);
-
-		new AsyncTask<String, String, String>() {
+		new AsyncTask<String, String, String[]>() {
 
 			@Override
-			protected String doInBackground(String... params) {
+			protected String[] doInBackground(String... params) {
+
+				ArrayList<String> results = new ArrayList<String>();
+
 				try {
+					// Location automatique
+					LocationManager loma = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+					Criteria criteria = new Criteria();
+					criteria.setSpeedAccuracy(Criteria.NO_REQUIREMENT);
+					criteria.setPowerRequirement(Criteria.POWER_LOW);
+					criteria.setAltitudeRequired(false);
+					criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+					String provider = loma.getBestProvider(criteria, false);
+
+					loma.requestSingleUpdate(criteria, PendingIntent
+							.getBroadcast(getApplicationContext(), 0,
+									getIntent(),
+									PendingIntent.FLAG_UPDATE_CURRENT));
+
+					location = loma.getLastKnownLocation(provider);
+
 					URL url = new URL(
 							"http://maps.google.com/maps/geo?output=xml&oe=utf-8&ll="
 									+ location.getLatitude() + ","
@@ -48,23 +70,50 @@ public class SignUpActivity extends Activity {
 					Reader is = new InputStreamReader(new BufferedInputStream(
 							urlconn.getInputStream()), "UTF-8");
 					StringBuilder stringBuild = new StringBuilder();
-					
+
 					char[] buffer = new char[65535];
-					
+
 					int read = is.read(buffer);
 					while (read > 0) {
-						stringBuild.append(buffer);
+						stringBuild.append(buffer, 0, read);
 						read = is.read(buffer);
 					}
-					stringBuild.append(buffer);
-					
-					return stringBuild.toString();
+
+					Document doc;
+					DocumentBuilderFactory bdf = DocumentBuilderFactory
+							.newInstance();
+
+					DocumentBuilder db = bdf.newDocumentBuilder();
+
+					InputSource inputSource = new InputSource();
+					inputSource.setCharacterStream(new StringReader(stringBuild
+							.toString()));
+					doc = db.parse(inputSource);
+
+					NodeList nodes = doc.getElementsByTagName("LocalityName");
+
+					if (nodes.getLength() > 0) {
+						results.add(nodes.item(0).getTextContent());
+					}
+
+					nodes = doc.getElementsByTagName("CountryName");
+
+					if (nodes.getLength() > 0) {
+						results.add(nodes.item(0).getTextContent());
+					}
+
 				} catch (Exception e) {
 					// Gotta catch 'em all
 					e.printStackTrace();
 				}
-				return "";
+				return results.toArray(new String[results.size()]);
 			}
+			
+			@Override
+			protected void onPostExecute(String[] result) {
+				((EditText) findViewById(R.id.location_text_edit)).setText(result[0]);
+				((EditText) findViewById(R.id.pays_text_edit)).setText(result[1]);
+			};
 
 		}.execute("");
 	}
@@ -73,5 +122,16 @@ public class SignUpActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_sign_up, menu);
 		return true;
+	}
+
+	public void finishRegistration(View view) {
+
+	}
+
+	public void selectPhoto(View view) {
+		Intent intent = new Intent(Intent.ACTION_RUN);
+		intent.addCategory(Intent.CATEGORY_APP_GALLERY);
+
+		startActivity(intent);
 	}
 }
