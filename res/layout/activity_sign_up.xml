@@ -1,0 +1,84 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true" >
+
+    <RelativeLayout
+        android:id="@+id/location_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="443dp" >
+
+        <QuickContactBadge
+            android:id="@+id/photo_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="36dp" />
+
+        <EditText
+            android:id="@+id/nomTextEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/photo_textedit"
+            android:layout_toRightOf="@+id/photo_textedit"
+            android:ems="10"
+            android:hint="@string/name_textbox_hint"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/prenom_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/nomTextEdit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/nomTextEdit"
+            android:ems="10"
+            android:hint="@string/prenom_textbox"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/pseudo_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/photo_textedit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/prenom_textedit"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/pseudo_text" />
+
+        <EditText
+            android:id="@+id/password_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/pseudo_textedit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/pseudo_textedit"
+            android:ems="10"
+            android:hint="@string/password_string"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/location_text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/password_textedit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/password_textedit"
+            android:ems="10"
+            android:hint="@string/location_text_view_string" />
+
+    </RelativeLayout>
+
+</ScrollView>

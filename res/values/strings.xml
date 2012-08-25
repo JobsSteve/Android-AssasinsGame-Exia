@@ -36,5 +36,10 @@
     <string name="pseudo_textview_string">Pseudo</string>
     <string name="biography_textview_string">Biographie</string>
     <string name="title_activity_show_contract">ShowContractActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="name_textbox_hint">Nom</string>
+    <string name="prenom_textbox">Prenom</string>
+    <string name="location_text_view_string">Location</string>
+    <string name="google_maps_api_key">0UdwCEOLoWCUwNFjDgmZXn842wBLoQ0x23Mr8Wg</string>
 
 </resources>
