@@ -18,18 +18,23 @@ import org.xml.sax.InputSource;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class SignUpActivity extends Activity {
 
 	Location location;
+
+	private final int PICK_IMAGE = 1;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -108,11 +113,13 @@ public class SignUpActivity extends Activity {
 				}
 				return results.toArray(new String[results.size()]);
 			}
-			
+
 			@Override
 			protected void onPostExecute(String[] result) {
-				((EditText) findViewById(R.id.location_text_edit)).setText(result[0]);
-				((EditText) findViewById(R.id.pays_text_edit)).setText(result[1]);
+				((EditText) findViewById(R.id.location_text_edit))
+						.setText(result[0]);
+				((EditText) findViewById(R.id.pays_text_edit))
+						.setText(result[1]);
 			};
 
 		}.execute("");
@@ -125,13 +132,26 @@ public class SignUpActivity extends Activity {
 	}
 
 	public void finishRegistration(View view) {
+		Intent intent = new Intent(view.getContext(), StartScreen.class);
 
+		startActivity(intent);
 	}
 
 	public void selectPhoto(View view) {
-		Intent intent = new Intent(Intent.ACTION_RUN);
-		intent.addCategory(Intent.CATEGORY_APP_GALLERY);
+		Intent intent = new Intent();
+		intent.setType("image/*");
+		intent.setAction(Intent.ACTION_GET_CONTENT);
 
-		startActivity(intent);
+		startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+				1);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == PICK_IMAGE && data != null && data.getData() != null) {
+			Uri _uri = data.getData();
+			((ImageButton) findViewById(R.id.photo_textedit)).setImageURI(_uri);
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }
