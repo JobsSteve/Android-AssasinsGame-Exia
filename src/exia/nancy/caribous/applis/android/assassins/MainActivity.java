@@ -30,4 +30,13 @@ public class MainActivity extends Activity {
 		
 		startActivity(i);
 	}
+	
+	
+	public void goToCreationPartie(View view) {
+		Intent i = new Intent(view.getContext(), CreationPartieActivity.class);
+		startActivity(i);
+	}
+	
+	
+	
 }

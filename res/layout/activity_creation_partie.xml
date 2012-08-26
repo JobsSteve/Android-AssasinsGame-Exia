@@ -1,0 +1,93 @@
+
+<ScrollView xmlns:android1="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:orientation="vertical" >
+
+
+	<RadioGroup android1:id="@+id/radioGroupPubPriv"
+		android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+		android1:orientation="horizontal">
+
+		<RadioButton android1:id="@+id/radioPub"
+			android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+			android1:checked="true" android1:text="@string/publique_radio_string" />
+
+
+		<RadioButton android1:id="@+id/radioPriv"
+			android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+			android1:text="@string/prive_radio_string" />
+	</RadioGroup>
+
+	<RadioGroup android1:id="@+id/radioGroupSoloTeam"
+		android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+		android1:orientation="horizontal">
+
+		<RadioButton android1:id="@+id/radioSolo"
+			android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+			android1:checked="true" android1:text="@string/solo_radio_string" />
+
+
+		<RadioButton android1:id="@+id/radioTeam"
+			android1:layout_width="wrap_content" android1:layout_height="wrap_content"
+			android1:text="@string/team_radio_string" />
+	</RadioGroup>
+
+	<EditText
+	    android:id="@+id/nomPartie"
+	    android:layout_width="316dp"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/nom_string"
+	    android:inputType="text" >
+
+	    <requestFocus />
+	</EditText>
+
+	<EditText
+	    android:id="@+id/descriptionPartie"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/description_string"
+	    android:inputType="text" />
+
+	<EditText
+	    android:id="@+id/nombreDeJoueur"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/nbjoueur_string"
+	    android:inputType="numberSigned" />
+
+	<EditText
+	    android:id="@+id/dollarContrat"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/dollarpercontrat_string"
+	    android:inputType="numberDecimal" />
+
+	<EditText
+	    android:id="@+id/minimumJoueur"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/minijoueur_string"
+	    android:inputType="numberSigned" />
+
+	<EditText
+	    android:id="@+id/dateDebut"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="@string/datedebut_string"
+	    android:inputType="date" />
+
+	<Button
+	    android:id="@+id/btnCreer"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="115dp"
+	    android:onClick="onClickCreate"
+	    android:text="@string/creer_string" />
+	
+	</LinearLayout>
+</ScrollView>

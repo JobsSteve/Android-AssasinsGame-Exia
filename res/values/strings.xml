@@ -31,5 +31,19 @@
     <string name="survivors_left_string">Survivors left</string>
     <string name="nb_teams_string">Nb Teams</string>
     <string name="teams_set_string">Teams</string>
+    <string name="prive_radio_string">Privé</string>
+    <string name="publique_radio_string">Publique</string>
+    <string name="solo_radio_string">Solo</string>
+    <string name="team_radio_string">Equipe</string>
+    <string name="title_activity_creation_partie">CreationPartieActivity</string>
+    <string name="nom_string">Nom</string>
+    <string name="description_string">Description</string>
+    <string name="nbjoueur_string">Nombre de joueur</string>
+    <string name="dollarpercontrat_string">Dollar par contrat</string>
+    <string name="minijoueur_string">Minimum de joueur</string>
+    <string name="datedebut_string">Date de début</string>
+    <string name="creer_string">Créer</string>
+    <string name="title_activity_description_partie">DescriptionPartie</string>
+    <string name="rejoindre_string">Rejoindre</string>
 
 </resources>
