@@ -57,5 +57,6 @@
     <string name="join_alternate_string">Join</string>
     <string name="starts_on_date">Date début</string>
     <string name="load_more_button_string">Load More</string>
+    <string name="title_activity_liste_contrats_actifs">ListeContratsActifsActivity</string>
 
 </resources>

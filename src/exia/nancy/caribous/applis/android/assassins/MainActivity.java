@@ -27,13 +27,20 @@ public class MainActivity extends Activity {
 
 	public void goToPartiesEnCours(View view) {
 		Intent i = new Intent(view.getContext(), RandomPagerActivity.class);
-		
+
 		startActivity(i);
 	}
-	
-	public void goToJoinParties(View view){
+
+	public void goToJoinParties(View view) {
 		Intent i = new Intent(view.getContext(), JoinGame.class);
-		
+
+		startActivity(i);
+	}
+
+	public void goToActiveContracts(View view) {
+		Intent i = new Intent(view.getContext(),
+				ListeContratsActifsActivity.class);
+
 		startActivity(i);
 	}
 }

@@ -94,7 +94,7 @@
                 android:layout_columnSpan="4"
                 android:layout_row="7"
                 android:text="@string/legal_button_string" />
-
+
             <Button
                 android:id="@+id/button8"
                 android:layout_width="fill_parent"
@@ -102,6 +102,7 @@
                 android:layout_column="0"
                 android:layout_columnSpan="4"
                 android:layout_row="8"
+                android:onClick="goToActiveContracts"
                 android:text="@string/contrats_actifs_button_string" />
 
             <Button
