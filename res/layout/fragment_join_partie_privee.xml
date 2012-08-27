@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"><RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|fill_vertical" >
+
+        <EditText
+            android:id="@+id/patie_a_chercher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:hint="@string/partie_chercher_textedit_string" >
+
+            <requestFocus />
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/partie_privee_search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/patie_a_chercher"
+            android:layout_below="@+id/patie_a_chercher"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="80dip"
+            android:contentDescription="@string/partie_privee_search_button_desc"
+            android:src="@drawable/ic_action_search" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -34,6 +34,7 @@ public class StartScreen extends Activity {
 		i.putExtra("Username", username);
 
 		startActivity(i);
+		finish();
 	}
 	
 	public void signUpFunction(View view){
@@ -41,5 +42,6 @@ public class StartScreen extends Activity {
 		Intent i = new Intent(view.getContext(), SignUpActivity.class);
 		
 		startActivity(i);
+		finish();
 	}
 }

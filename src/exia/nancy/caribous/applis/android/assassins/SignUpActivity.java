@@ -18,7 +18,6 @@ import org.xml.sax.InputSource;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -135,6 +134,8 @@ public class SignUpActivity extends Activity {
 		Intent intent = new Intent(view.getContext(), StartScreen.class);
 
 		startActivity(intent);
+
+		finish();
 	}
 
 	public void selectPhoto(View view) {

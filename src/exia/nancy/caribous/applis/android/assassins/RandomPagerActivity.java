@@ -89,11 +89,15 @@ public class RandomPagerActivity extends FragmentActivity {
 			}
 		}
 	}
-	
-	public void buttonCurrContractPress(View view){
+
+	public void buttonCurrContractPress(View view) {
 		// On appelle le détail du contrat
-		Intent intent = new Intent(view.getContext(), ShowContractActivity.class);
-		
+		Intent intent = new Intent(view.getContext(),
+				ShowContractActivity.class);
+
+//		TODO PartieFragment fragPartie = (PartieFragment) mSectionsPagerAdapter
+//				.getItem(mViewPager.getCurrentItem());
+
 		startActivity(intent);
 	}
 

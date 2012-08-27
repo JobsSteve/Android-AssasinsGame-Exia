@@ -30,4 +30,10 @@ public class MainActivity extends Activity {
 		
 		startActivity(i);
 	}
+	
+	public void goToJoinParties(View view){
+		Intent i = new Intent(view.getContext(), JoinGame.class);
+		
+		startActivity(i);
+	}
 }

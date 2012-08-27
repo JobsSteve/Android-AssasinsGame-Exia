@@ -45,5 +45,17 @@
     <string name="terminer_button">Terminer</string>
     <string name="picture_player">Photo</string>
     <string name="mail_address_textedit">Adresse mail</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_activity_join_game">JoinGame</string>
+    <string name="partie_publique_string">Public</string>
+    <string name="partie_chercher_textedit_string">Code de la partie</string>
+    <string name="partie_privee_search_button_desc">Rechercher partie privée</string>
+    <string name="contract_picturebutton">Photo contrat</string>
+    <string name="nb_of_players_string">Players in / max</string>
+    <string name="join_alternate_string">Join</string>
+    <string name="starts_on_date">Date début</string>
+    <string name="load_more_button_string">Load More</string>
 
 </resources>
