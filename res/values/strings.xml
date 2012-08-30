@@ -45,5 +45,12 @@
     <string name="creer_string">Créer</string>
     <string name="title_activity_description_partie">DescriptionPartie</string>
     <string name="rejoindre_string">Rejoindre</string>
+    <string name="title_activity_statistiques">StatistiquesActivity</string>
+    <string name="achievements_string">Achievements</string>
+    <string name="historique_string">Historique</string>
+    <string name="title_activity_partie_attente">PartieAttenteActivity</string>
+    <string name="title_activity_fragment_partie_attente">FragmentPartieAttente</string>
+    <string name="title_activity_inviter_joueur">InviterJoueurActivity</string>
+    <string name="title_activity_invite_joueur_fragment">InviteJoueurFragment</string>
 
 </resources>
