@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/tout_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/all_radiobutton_string" />
+
+            <RadioButton
+                android:id="@+id/team_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/team_radiobutton_string" />
+
+            <RadioButton
+                android:id="@+id/solo_radiobutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ffa_radio_string" />
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/ville_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/radioGroup1"
+            android:layout_marginTop="27dp"
+            android:ems="10"
+            android:hint="@string/location_text_view_string"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/pays_textedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ville_textedit"
+            android:ems="10"
+            android:hint="@string/pays_text_string" >
+
+            
+        </EditText>
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/pays_textedit"
+            android:layout_marginRight="29dp"
+            android:layout_marginTop="26dp"
+            android:contentDescription="@string/search_button_string"
+            android:src="@drawable/ic_action_search" /></RelativeLayout>
+
+</ScrollView>

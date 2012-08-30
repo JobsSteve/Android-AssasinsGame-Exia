@@ -3,6 +3,7 @@ package exia.nancy.caribous.applis.android.assassins;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class JoinGame extends FragmentActivity implements ActionBar.TabListener {
@@ -75,8 +77,20 @@ public class JoinGame extends FragmentActivity implements ActionBar.TabListener 
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_join_game, menu);
+		getMenuInflater().inflate(R.menu.join_game_menu, menu);
+
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.searchItem) {
+			Intent i = new Intent(getApplicationContext(),
+					GameSearchActivity.class);
+
+			startActivity(i);
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

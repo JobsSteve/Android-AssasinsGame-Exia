@@ -32,41 +32,22 @@
         <activity android:name="RandomPagerActivity" >
         </activity>
         <activity
-            android:name=".ShowContractActivity"
+            android:name="ShowContractActivity"
             android:label="@string/title_activity_show_contract" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".JoinGame"
             android:label="@string/title_activity_join_game" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ListeContratsActifsActivity"
             android:label="@string/title_activity_liste_contrats_actifs" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name="GameSearchActivity"></activity>
     </application>
 
 </manifest>

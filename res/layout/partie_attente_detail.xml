@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/name_of_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/NameOfGame"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/nb_players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name_of_game"
+        android:layout_below="@+id/name_of_game"
+        android:layout_marginTop="30dp"
+        android:text="@string/nb_participants_string"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageButton
+        android:id="@+id/cancel_application_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/name_of_game"
+        android:layout_marginRight="19dp"
+        android:contentDescription="@string/cancel_app_button"
+        android:src="@drawable/ic_action_search" />
+
+    <TextView
+        android:id="@+id/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nb_players"
+        android:layout_below="@+id/nb_players"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/game_start_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</RelativeLayout>

@@ -1,29 +1,14 @@
 package exia.nancy.caribous.applis.android.assassins;
 
-import java.io.BufferedInputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-
+import metier.all_purpose.LocationHelper;
+import metier.all_purpose.LocationObject;
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +17,7 @@ import android.widget.ImageButton;
 public class SignUpActivity extends Activity {
 
 	Location location;
+	Handler handle;
 
 	private final int PICK_IMAGE = 1;
 
@@ -40,88 +26,28 @@ public class SignUpActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
 
-		new AsyncTask<String, String, String[]>() {
+		handle = new Handler();
+
+		new AsyncTask<Activity, String, LocationObject>() {
 
 			@Override
-			protected String[] doInBackground(String... params) {
-
-				ArrayList<String> results = new ArrayList<String>();
-
-				try {
-					// Location automatique
-					LocationManager loma = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-					Criteria criteria = new Criteria();
-					criteria.setSpeedAccuracy(Criteria.NO_REQUIREMENT);
-					criteria.setPowerRequirement(Criteria.POWER_LOW);
-					criteria.setAltitudeRequired(false);
-					criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-					String provider = loma.getBestProvider(criteria, false);
-
-					loma.requestSingleUpdate(criteria, PendingIntent
-							.getBroadcast(getApplicationContext(), 0,
-									getIntent(),
-									PendingIntent.FLAG_UPDATE_CURRENT));
-
-					location = loma.getLastKnownLocation(provider);
-
-					URL url = new URL(
-							"http://maps.google.com/maps/geo?output=xml&oe=utf-8&ll="
-									+ location.getLatitude() + ","
-									+ location.getLongitude() + "&key="
-									+ R.string.google_maps_api_key);
-					URLConnection urlconn = url.openConnection();
-					Reader is = new InputStreamReader(new BufferedInputStream(
-							urlconn.getInputStream()), "UTF-8");
-					StringBuilder stringBuild = new StringBuilder();
-
-					char[] buffer = new char[65535];
-
-					int read = is.read(buffer);
-					while (read > 0) {
-						stringBuild.append(buffer, 0, read);
-						read = is.read(buffer);
-					}
-
-					Document doc;
-					DocumentBuilderFactory bdf = DocumentBuilderFactory
-							.newInstance();
-
-					DocumentBuilder db = bdf.newDocumentBuilder();
-
-					InputSource inputSource = new InputSource();
-					inputSource.setCharacterStream(new StringReader(stringBuild
-							.toString()));
-					doc = db.parse(inputSource);
-
-					NodeList nodes = doc.getElementsByTagName("LocalityName");
-
-					if (nodes.getLength() > 0) {
-						results.add(nodes.item(0).getTextContent());
-					}
-
-					nodes = doc.getElementsByTagName("CountryName");
-
-					if (nodes.getLength() > 0) {
-						results.add(nodes.item(0).getTextContent());
-					}
-
-				} catch (Exception e) {
-					// Gotta catch 'em all
-					e.printStackTrace();
-				}
-				return results.toArray(new String[results.size()]);
+			protected LocationObject doInBackground(Activity... params) {
+				return new LocationHelper().getLocations(params[0]);
 			}
 
 			@Override
-			protected void onPostExecute(String[] result) {
-				((EditText) findViewById(R.id.location_text_edit))
-						.setText(result[0]);
-				((EditText) findViewById(R.id.pays_text_edit))
-						.setText(result[1]);
+			protected void onPostExecute(LocationObject result) {
+				CustomLocationRunnableClass runnab = new CustomLocationRunnableClass();
+
+				runnab.setPays(result.getCountry());
+				runnab.setVille(result.getCity());
+
+				handle.post(runnab);
+
 			};
 
-		}.execute("");
+		}.execute(this);
+
 	}
 
 	@Override
@@ -154,5 +80,25 @@ public class SignUpActivity extends Activity {
 			((ImageButton) findViewById(R.id.photo_textedit)).setImageURI(_uri);
 		}
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	private class CustomLocationRunnableClass implements Runnable {
+
+		private String pays;
+		private String ville;
+
+		public void setPays(String pays) {
+			this.pays = pays;
+		}
+
+		public void setVille(String ville) {
+			this.ville = ville;
+		}
+
+		public void run() {
+			((EditText) findViewById(R.id.location_text_edit)).setText(ville);
+			((EditText) findViewById(R.id.pays_text_edit)).setText(pays);
+		}
+
 	}
 }

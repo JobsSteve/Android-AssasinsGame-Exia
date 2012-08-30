@@ -36,11 +36,11 @@ public class StartScreen extends Activity {
 		startActivity(i);
 		finish();
 	}
-	
-	public void signUpFunction(View view){
-		
+
+	public void signUpFunction(View view) {
+
 		Intent i = new Intent(view.getContext(), SignUpActivity.class);
-		
+
 		startActivity(i);
 		finish();
 	}

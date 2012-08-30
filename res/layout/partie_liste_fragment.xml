@@ -2,19 +2,19 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-
+
     <TableLayout
         android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center" >
-
+
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true" />
-
+
         <ImageButton
             android:id="@+id/load_more"
             android:layout_width="wrap_content"
@@ -23,7 +23,6 @@
             android:onClick="loadMore"
             android:src="@drawable/ic_action_search"
             android:visibility="gone" />
-
     </TableLayout>
 
 </ScrollView>
