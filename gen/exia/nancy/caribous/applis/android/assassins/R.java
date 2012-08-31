@@ -28,8 +28,8 @@ public final class R {
         public static final int cancel_application_button=0x7f070027;
         public static final int choix_mail_textedit=0x7f070015;
         public static final int contract_link_button=0x7f070032;
-        public static final int date_debut=0x7f070024;
-        public static final int date_fin=0x7f070025;
+        public static final int date_debut=0x7f070025;
+        public static final int date_fin=0x7f070024;
         public static final int game_description_textView=0x7f07002b;
         public static final int game_info=0x7f07002c;
         public static final int game_name_id=0x7f070029;
