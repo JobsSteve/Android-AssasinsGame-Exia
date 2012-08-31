@@ -37,7 +37,7 @@ public class PageLoaderHelper {
 		read = is.read(buffer);
 
 		while (read > 0) {
-			stringBuild.append(buffer, 0, read-1);
+			stringBuild.append(buffer, 0, read - 1);
 			read = is.read(buffer);
 		}
 
@@ -48,64 +48,54 @@ public class PageLoaderHelper {
 	public String sendPostDataToUrl(URL url, Map<String, String> arguments)
 			throws IOException {
 
-		DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
-
-		HttpPost postRequest = new HttpPost();
 		try {
-			postRequest.setURI(url.toURI());
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
+			DefaultHttpClient defaultHttpClient = new DefaultHttpClient();
 
-		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
-		Set<String> keys = arguments.keySet();
-
-		for (String key : keys) {
-			nameValuePairs.add(new BasicNameValuePair(key, arguments.get(key)));
-		}
-
-		postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-		HttpResponse httpResponse = (HttpResponse) defaultHttpClient
-				.execute(postRequest);
-
-		HttpEntity httpEntity = httpResponse.getEntity();
-		if (httpEntity != null) {
-			Reader is = new InputStreamReader(new BufferedInputStream(
-					httpEntity.getContent()), "UTF-8");
-
-			StringBuilder sb = new StringBuilder();
-
-			int read;
-
-			char[] buffer = new char[65535];
-
-			read = is.read(buffer);
-
-			while (read > 0) {
-				sb.append(buffer.toString(), 0, read);
-				read = is.read(buffer);
+			HttpPost postRequest = new HttpPost();
+			try {
+				postRequest.setURI(url.toURI());
+			} catch (URISyntaxException e) {
+				e.printStackTrace();
 			}
 
-			return sb.toString();
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
+			Set<String> keys = arguments.keySet();
+
+			for (String key : keys) {
+				nameValuePairs.add(new BasicNameValuePair(key, arguments
+						.get(key)));
+			}
+
+			postRequest.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+			HttpResponse httpResponse = (HttpResponse) defaultHttpClient
+					.execute(postRequest);
+
+			HttpEntity httpEntity = httpResponse.getEntity();
+			if (httpEntity != null) {
+				Reader is = new InputStreamReader(new BufferedInputStream(
+						httpEntity.getContent()), "ISO-8859-1");
+
+				StringBuilder sb = new StringBuilder();
+
+				int read;
+
+				char[] buffer = new char[65535];
+
+				read = is.read(buffer);
+
+				while (read > 0) {
+					sb.append(buffer, 0, read - 1);
+					read = is.read(buffer);
+				}
+
+				return sb.toString();
+
+			}
+		} catch (Exception e) {
+			return "";
 		}
-
-		// String finalPost = streBuild.toString();
-
-		// OutputStream os = urlconn.getOutputStream();
-		// os.write(finalPost.toString().getBytes("UTF-8"));
-
-		// Reader is = new InputStreamReader(new BufferedInputStream(
-		// urlconn.getInputStream()), "UTF-8");
-		// StringBuilder stringBuild = new StringBuilder();
-		//
-		//
-		//
-		// is.close();
-		// os.close();
-
 		return "";
 	}
 }
