@@ -52,5 +52,7 @@
     <string name="title_activity_fragment_partie_attente">FragmentPartieAttente</string>
     <string name="title_activity_inviter_joueur">InviterJoueurActivity</string>
     <string name="title_activity_invite_joueur_fragment">InviteJoueurFragment</string>
+    <string name="title_activity_shop_fragment">ShopFragment</string>
+    <string name="title_activity_shop">ShopActivity</string>
 
 </resources>

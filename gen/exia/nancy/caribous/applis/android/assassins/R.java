@@ -15,11 +15,13 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int achievements=0x7f07002d;
-        public static final int achievementsLayout=0x7f07002c;
-        public static final int btnClose=0x7f070035;
+        public static final int achievements=0x7f07002f;
+        public static final int achievementsLayout=0x7f07002e;
+        public static final int argent=0x7f070025;
+        public static final int btnBuy=0x7f07003c;
+        public static final int btnClose=0x7f070037;
         public static final int btnCreer=0x7f07000c;
-        public static final int btnInvit=0x7f070033;
+        public static final int btnInvit=0x7f070035;
         public static final int btnRejoindre=0x7f070013;
         public static final int button1=0x7f07001f;
         public static final int button2=0x7f070021;
@@ -30,39 +32,41 @@ public final class R {
         public static final int button7=0x7f07001b;
         public static final int button8=0x7f070020;
         public static final int dateDebut=0x7f07000b;
-        public static final int datePartie=0x7f070037;
+        public static final int datePartie=0x7f070039;
         public static final int descriptionPartie=0x7f070007;
         public static final int dollarContrat=0x7f070009;
-        public static final int elementListPartiesAttente=0x7f070034;
-        public static final int game_description_textView=0x7f070039;
-        public static final int game_info=0x7f07003a;
-        public static final int game_name_id=0x7f070038;
-        public static final int historique=0x7f070030;
-        public static final int historiqueLayout=0x7f07002f;
+        public static final int elementListPartiesAttente=0x7f070036;
+        public static final int game_description_textView=0x7f07003e;
+        public static final int game_info=0x7f07003f;
+        public static final int game_name_id=0x7f07003d;
+        public static final int historique=0x7f070032;
+        public static final int historiqueLayout=0x7f070031;
         public static final int infoDivers=0x7f07000d;
-        public static final int listViewAchievements=0x7f07002e;
-        public static final int listViewHistorique=0x7f070031;
+        public static final int listViewAchievements=0x7f070030;
+        public static final int listViewHistorique=0x7f070033;
         public static final int listViewInviteJoueur=0x7f070016;
+        public static final int listViewObjets=0x7f070026;
         public static final int listViewPartieAttente=0x7f070022;
-        public static final int logInButton=0x7f070028;
-        public static final int menu_settings=0x7f070040;
+        public static final int logInButton=0x7f07002a;
+        public static final int menu_settings=0x7f070045;
         public static final int minimumJoueur=0x7f07000a;
         public static final int nbInscrits=0x7f070012;
-        public static final int nbJouees=0x7f07002b;
-        public static final int nbKill=0x7f070029;
-        public static final int nbMort=0x7f07002a;
+        public static final int nbJouees=0x7f07002d;
+        public static final int nbKill=0x7f07002b;
+        public static final int nbMort=0x7f07002c;
         public static final int nbParticipant=0x7f07000e;
-        public static final int nbParticipants=0x7f070036;
+        public static final int nbParticipants=0x7f070038;
         public static final int nbSurvivant=0x7f070010;
         public static final int nbTeam=0x7f070011;
-        public static final int nb_participants=0x7f07003b;
-        public static final int nb_teams=0x7f07003e;
+        public static final int nb_participants=0x7f070040;
+        public static final int nb_teams=0x7f070043;
+        public static final int nomObjet=0x7f07003a;
         public static final int nomPartie=0x7f070006;
         public static final int nombreDeJoueur=0x7f070008;
         public static final int pager=0x7f070023;
         public static final int pager_title_strip=0x7f070024;
-        public static final int passwordTextBox=0x7f070026;
-        public static final int pseudoPerso=0x7f070032;
+        public static final int passwordTextBox=0x7f070028;
+        public static final int pseudoPerso=0x7f070034;
         public static final int pseudoSearch=0x7f070014;
         public static final int quickContactBadge1=0x7f070018;
         public static final int radioGroupPubPriv=0x7f070000;
@@ -73,13 +77,14 @@ public final class R {
         public static final int radioTeam=0x7f070005;
         public static final int scrollView1=0x7f070017;
         public static final int searchButton=0x7f070015;
-        public static final int signInButton=0x7f070027;
-        public static final int survivors_left=0x7f07003d;
+        public static final int signInButton=0x7f070029;
+        public static final int survivors_left=0x7f070042;
         public static final int tagTwitter=0x7f07000f;
-        public static final int teams_set=0x7f07003f;
+        public static final int teams_set=0x7f070044;
         public static final int textView1=0x7f070019;
-        public static final int twitter_tag=0x7f07003c;
-        public static final int userNameTexBox=0x7f070025;
+        public static final int twitter_tag=0x7f070041;
+        public static final int userNameTexBox=0x7f070027;
+        public static final int view1=0x7f07003b;
     }
     public static final class layout {
         public static final int activity_creation_partie=0x7f030000;
@@ -88,11 +93,13 @@ public final class R {
         public static final int activity_main=0x7f030003;
         public static final int activity_partie_attente=0x7f030004;
         public static final int activity_parties_en_cours=0x7f030005;
-        public static final int activity_start_screen=0x7f030006;
-        public static final int activity_statistiques=0x7f030007;
-        public static final int fragment_invite_joueur=0x7f030008;
-        public static final int fragment_partie_attente=0x7f030009;
-        public static final int partie_fragment=0x7f03000a;
+        public static final int activity_shop=0x7f030006;
+        public static final int activity_start_screen=0x7f030007;
+        public static final int activity_statistiques=0x7f030008;
+        public static final int fragment_invite_joueur=0x7f030009;
+        public static final int fragment_partie_attente=0x7f03000a;
+        public static final int fragment_shop=0x7f03000b;
+        public static final int partie_fragment=0x7f03000c;
     }
     public static final class menu {
         public static final int activity_creation_partie=0x7f060000;
@@ -101,10 +108,12 @@ public final class R {
         public static final int activity_main=0x7f060003;
         public static final int activity_partie_attente=0x7f060004;
         public static final int activity_parties_en_cours=0x7f060005;
-        public static final int activity_start_screen=0x7f060006;
-        public static final int activity_statistiques=0x7f060007;
-        public static final int fragment_invite_joueur=0x7f060008;
-        public static final int fragment_partie_attente=0x7f060009;
+        public static final int activity_shop=0x7f060006;
+        public static final int activity_start_screen=0x7f060007;
+        public static final int activity_statistiques=0x7f060008;
+        public static final int fragment_invite_joueur=0x7f060009;
+        public static final int fragment_partie_attente=0x7f06000a;
+        public static final int fragment_shop=0x7f06000b;
     }
     public static final class string {
         public static final int NameOfGame=0x7f040017;
@@ -152,6 +161,8 @@ public final class R {
         public static final int title_activity_main=0x7f040009;
         public static final int title_activity_partie_attente=0x7f040030;
         public static final int title_activity_parties_en_cours=0x7f040016;
+        public static final int title_activity_shop=0x7f040035;
+        public static final int title_activity_shop_fragment=0x7f040034;
         public static final int title_activity_start_screen=0x7f040002;
         public static final int title_activity_statistiques=0x7f04002d;
         public static final int title_section1=0x7f040015;
