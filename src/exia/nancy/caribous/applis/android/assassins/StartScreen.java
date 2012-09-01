@@ -3,9 +3,12 @@ package exia.nancy.caribous.applis.android.assassins;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
@@ -21,6 +24,15 @@ public class StartScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start_screen);
 		handle = new Handler();
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		if (prefs.contains("AuthenticationKeyExiassassins")) {
+			Intent i = new Intent(this, MainActivity.class);
+			i.putExtra("Username", prefs.getString("UsernameExiassassins", ""));
+
+			startActivity(i);
+			finish();
+		}
 	}
 
 	@Override
@@ -40,7 +52,9 @@ public class StartScreen extends Activity {
 
 				this.screen = arg0[0];
 
-				return new AuthentificationHelper()
+				AuthentificationHelper auth = new AuthentificationHelper();
+
+				boolean res = auth
 						.authenticate(
 								((EditText) this.screen
 										.findViewById(R.id.userNameTexBox))
@@ -50,6 +64,21 @@ public class StartScreen extends Activity {
 										.getText().toString(),
 								((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
 										.getDeviceId());
+
+				if (res) {
+					SharedPreferences prefs = PreferenceManager
+							.getDefaultSharedPreferences(screen);
+					Editor edit = prefs.edit();
+					edit.putString("AuthenticationKeyExiassassins",
+							auth.getToken());
+					edit.putString("UsernameExiassassins",
+							((EditText) this.screen
+									.findViewById(R.id.userNameTexBox))
+									.getText().toString());
+					edit.commit();
+				}
+
+				return res;
 			}
 
 			protected void onPostExecute(Boolean result) {
