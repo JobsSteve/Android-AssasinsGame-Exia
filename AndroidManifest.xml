@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:hardwareAccelerated="true"
@@ -32,12 +32,13 @@
         </activity>
         <activity android:name="RandomPagerActivity" >
         </activity>
-	<activity android:name="PartiesEnCours" >
+        <activity android:name="PartiesEnCours" >
         </activity>
         <activity
-android:name="ShowContractActivity"
-android:label="@string/title_activity_show_contract" >
-	<activity
+            android:name="ShowContractActivity"
+            android:label="@string/title_activity_show_contract" >
+        </activity>
+        <activity
             android:name=".CreationPartieActivity"
             android:label="@string/title_activity_creation_partie" >
             <intent-filter>
@@ -46,9 +47,23 @@ android:label="@string/title_activity_show_contract" >
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-	<activity
-		android:name=".SignUpActivity"
+        <activity
+            android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" >
+        </activity>
+        <activity
+            android:name=".StatistiquesActivity"
+            android:label="@string/title_activity_statistiques" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ListeContratsActifsActivity"
+            android:label="@string/title_activity_liste_contrats_actifs" >
+        </activity>
         <activity
             android:name=".DescriptionPartie"
             android:label="@string/title_activity_description_partie" >
@@ -58,22 +73,10 @@ android:label="@string/title_activity_show_contract" >
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".JoinGame"
             android:label="@string/title_activity_join_game" >
-	<activity
-            android:name=".StatistiquesActivity"
-            android:label="@string/title_activity_statistiques" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-	<activity
-	android:name=".ListeContratsActifsActivity"
-            android:label="@string/title_activity_liste_contrats_actifs" >
         <activity
             android:name=".PartieAttenteActivity"
             android:label="@string/title_activity_partie_attente" >
@@ -128,7 +131,8 @@ android:label="@string/title_activity_show_contract" >
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="GameSearchActivity"></activity>
+        <activity android:name="GameSearchActivity" >
+        </activity>
     </application>
 
 </manifest>

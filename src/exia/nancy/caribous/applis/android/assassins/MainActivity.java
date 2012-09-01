@@ -26,8 +26,8 @@ public class MainActivity extends Activity {
 	}
 
 	public void goToPartiesEnCours(View view) {
-		Intent i = new Intent(view.getContext(), PartiesEnCours.class);
-		
+		Intent i = new Intent(view.getContext(), RandomPagerActivity.class);
+
 		startActivity(i);
 	}
 
@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 
 		startActivity(i);
 	}
+
 	public void goToCreationPartie(View view) {
 		Intent i = new Intent(view.getContext(), CreationPartieActivity.class);
 		startActivity(i);
@@ -47,6 +48,7 @@ public class MainActivity extends Activity {
 
 		startActivity(i);
 	}
+
 	public void goToPartieAttente(View view) {
 		Intent i = new Intent(view.getContext(), ShopActivity.class);
 		startActivity(i);

@@ -30,7 +30,6 @@ public class PartiesPubliquesList extends Fragment {
 		protected Partie[] doInBackground(Integer... params) {
 			handler.post(new Runnable() {
 
-				@Override
 				public void run() {
 					ProgressBar pb = ((ProgressBar) getActivity().findViewById(
 							R.id.progressBar));
@@ -64,7 +63,6 @@ public class PartiesPubliquesList extends Fragment {
 
 		private Partie[] result;
 
-		@Override
 		public void run() {
 			TableLayout tabLay = (TableLayout) getActivity().findViewById(
 					R.id.table_layout);

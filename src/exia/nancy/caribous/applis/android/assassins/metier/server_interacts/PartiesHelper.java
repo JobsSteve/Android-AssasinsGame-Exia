@@ -26,7 +26,8 @@ public class PartiesHelper {
 		ArrayList<Partie> listOfParties = new ArrayList<Partie>();
 
 		try {
-			url = new URL("http://192.168.1.5:8080/page/select/parties.aspx");
+			url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
+					+ "/page/select/parties.aspx");
 			String response = new PageLoaderHelper().getResponseFromUrl(url);
 
 			Document doc;

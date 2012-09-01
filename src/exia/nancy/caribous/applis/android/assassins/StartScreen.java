@@ -1,11 +1,5 @@
 package exia.nancy.caribous.applis.android.assassins;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-
-import metier.all_purpose.PageLoaderHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +10,12 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.AuthentificationHelper;
 
 public class StartScreen extends Activity {
+
 	Handler handle;
+	View view;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,42 +37,36 @@ public class StartScreen extends Activity {
 		String password = ((EditText) findViewById(R.id.passwordTextBox))
 				.getText().toString();
 
-		new AsyncTask<String, String, String>() {
+		this.view = view;
+
+		new AsyncTask<String, String, Boolean>() {
 
 			@Override
-			protected String doInBackground(String... arg0) {
+			protected Boolean doInBackground(String... arg0) {
 
-				try {
-					HashMap<String, String> argumentsOfRequest = new HashMap<String, String>();
-
-					argumentsOfRequest.put("pseudo", arg0[0]);
-					argumentsOfRequest.put("mdp", arg0[1]);
-					argumentsOfRequest
-							.put("id",
-									((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
-											.getDeviceId());
-
-					new PageLoaderHelper().sendPostDataToUrl(new URL(
-							PageLoaderHelper.SERVER_URL_AND_PORT
-									+ "/page/create/connexion.aspx"),
-							argumentsOfRequest);
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				// Intent i = new Intent(view.getContext(), MainActivity.class);
-				// i.putExtra("Username", arg0[0]);
-
-				// startActivity(i);
-				// finish();
-
-				return null;
-
+				return new AuthentificationHelper()
+						.authenticate(
+								arg0[0],
+								arg0[1],
+								((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
+										.getDeviceId());
 			}
+
+			protected void onPostExecute(Boolean result) {
+				if (result) {
+					handle.post(new Runnable() {
+
+						public void run() {
+							Intent i = new Intent();
+							i.setClass(StartScreen.this.view.getContext(),
+									MainActivity.class);
+
+							startActivity(i);
+							finish();
+						}
+					});
+				}
+			};
 
 		}.execute(username, password);
 

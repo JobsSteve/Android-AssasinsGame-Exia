@@ -93,7 +93,6 @@ public class JoinGame extends FragmentActivity implements ActionBar.TabListener 
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
 	public void onTabSelected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
@@ -101,7 +100,6 @@ public class JoinGame extends FragmentActivity implements ActionBar.TabListener 
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
-	@Override
 	public void onTabReselected(ActionBar.Tab tab,
 			FragmentTransaction fragmentTransaction) {
 	}
@@ -167,7 +165,6 @@ public class JoinGame extends FragmentActivity implements ActionBar.TabListener 
 		}
 	}
 
-	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 

@@ -45,7 +45,6 @@ public class PartiesEnAttenteActivity extends FragmentActivity {
 			protected void onPostExecute(String result) {
 				handle.post(new Runnable() {
 
-					@Override
 					public void run() {
 						ViewGroup tabView = (ViewGroup) findViewById(R.id.tab_view_layout);
 						for (int i = 0; i < 20; i++) {
