@@ -15,7 +15,6 @@ import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.Auth
 public class StartScreen extends Activity {
 
 	Handler handle;
-	View view;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,22 +31,23 @@ public class StartScreen extends Activity {
 
 	public void logInFunction(View view) {
 
-		String username = ((EditText) findViewById(R.id.userNameTexBox))
-				.getText().toString();
-		String password = ((EditText) findViewById(R.id.passwordTextBox))
-				.getText().toString();
+		new AsyncTask<StartScreen, String, Boolean>() {
 
-		this.view = view;
-
-		new AsyncTask<String, String, Boolean>() {
+			StartScreen screen;
 
 			@Override
-			protected Boolean doInBackground(String... arg0) {
+			protected Boolean doInBackground(StartScreen... arg0) {
+
+				this.screen = arg0[0];
 
 				return new AuthentificationHelper()
 						.authenticate(
-								arg0[0],
-								arg0[1],
+								((EditText) this.screen
+										.findViewById(R.id.userNameTexBox))
+										.getText().toString(),
+								((EditText) this.screen
+										.findViewById(R.id.passwordTextBox))
+										.getText().toString(),
 								((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
 										.getDeviceId());
 			}
@@ -57,18 +57,21 @@ public class StartScreen extends Activity {
 					handle.post(new Runnable() {
 
 						public void run() {
-							Intent i = new Intent();
-							i.setClass(StartScreen.this.view.getContext(),
-									MainActivity.class);
+							Intent i = new Intent(screen, MainActivity.class);
 
-							startActivity(i);
-							finish();
+							i.putExtra("Username", ((EditText) screen
+									.findViewById(R.id.userNameTexBox))
+									.getText().toString());
+
+							screen.startActivity(i);
+
+							screen.finish();
 						}
 					});
 				}
 			};
 
-		}.execute(username, password);
+		}.execute(this);
 
 	}
 
