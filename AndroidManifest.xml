@@ -32,21 +32,101 @@
         </activity>
         <activity android:name="RandomPagerActivity" >
         </activity>
-        <activity
-            android:name="ShowContractActivity"
-            android:label="@string/title_activity_show_contract" >
+	<activity android:name="PartiesEnCours" >
         </activity>
         <activity
-            android:name=".SignUpActivity"
+android:name="ShowContractActivity"
+android:label="@string/title_activity_show_contract" >
+	<activity
+            android:name=".CreationPartieActivity"
+            android:label="@string/title_activity_creation_partie" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+	<activity
+		android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up" >
+        <activity
+            android:name=".DescriptionPartie"
+            android:label="@string/title_activity_description_partie" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".JoinGame"
             android:label="@string/title_activity_join_game" >
+	<activity
+            android:name=".StatistiquesActivity"
+            android:label="@string/title_activity_statistiques" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+	<activity
+	android:name=".ListeContratsActifsActivity"
+            android:label="@string/title_activity_liste_contrats_actifs" >
+        <activity
+            android:name=".PartieAttenteActivity"
+            android:label="@string/title_activity_partie_attente" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
-            android:name=".ListeContratsActifsActivity"
-            android:label="@string/title_activity_liste_contrats_actifs" >
+            android:name=".FragmentPartieAttente"
+            android:label="@string/title_activity_fragment_partie_attente" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".InviterJoueurActivity"
+            android:label="@string/title_activity_inviter_joueur" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".InviteJoueurFragment"
+            android:label="@string/title_activity_invite_joueur_fragment" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShopFragment"
+            android:label="@string/title_activity_shop_fragment" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShopActivity"
+            android:label="@string/title_activity_shop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="GameSearchActivity"></activity>
     </application>

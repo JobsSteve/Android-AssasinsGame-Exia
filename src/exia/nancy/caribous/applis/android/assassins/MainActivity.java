@@ -26,8 +26,8 @@ public class MainActivity extends Activity {
 	}
 
 	public void goToPartiesEnCours(View view) {
-		Intent i = new Intent(view.getContext(), RandomPagerActivity.class);
-
+		Intent i = new Intent(view.getContext(), PartiesEnCours.class);
+		
 		startActivity(i);
 	}
 
@@ -36,11 +36,19 @@ public class MainActivity extends Activity {
 
 		startActivity(i);
 	}
+	public void goToCreationPartie(View view) {
+		Intent i = new Intent(view.getContext(), CreationPartieActivity.class);
+		startActivity(i);
+	}
 
 	public void goToActiveContracts(View view) {
 		Intent i = new Intent(view.getContext(),
 				ListeContratsActifsActivity.class);
 
+		startActivity(i);
+	}
+	public void goToPartieAttente(View view) {
+		Intent i = new Intent(view.getContext(), ShopActivity.class);
 		startActivity(i);
 	}
 }

@@ -65,5 +65,28 @@
     <string name="game_start_date">Start date</string>
     <string name="cancel_app_button">Cancel</string>
     <string name="ends_on_date">Date Fin</string>
+    <string name="prive_radio_string">Privé</string>
+    <string name="publique_radio_string">Publique</string>
+    <string name="solo_radio_string">Solo</string>
+    <string name="team_radio_string">Equipe</string>
+    <string name="title_activity_creation_partie">CreationPartieActivity</string>
+    <string name="nom_string">Nom</string>
+    <string name="description_string">Description</string>
+    <string name="nbjoueur_string">Nombre de joueur</string>
+    <string name="dollarpercontrat_string">Dollar par contrat</string>
+    <string name="minijoueur_string">Minimum de joueur</string>
+    <string name="datedebut_string">Date de début</string>
+    <string name="creer_string">Créer</string>
+    <string name="title_activity_description_partie">DescriptionPartie</string>
+    <string name="rejoindre_string">Rejoindre</string>
+    <string name="title_activity_statistiques">StatistiquesActivity</string>
+    <string name="achievements_string">Achievements</string>
+    <string name="historique_string">Historique</string>
+    <string name="title_activity_partie_attente">PartieAttenteActivity</string>
+    <string name="title_activity_fragment_partie_attente">FragmentPartieAttente</string>
+    <string name="title_activity_inviter_joueur">InviterJoueurActivity</string>
+    <string name="title_activity_invite_joueur_fragment">InviteJoueurFragment</string>
+    <string name="title_activity_shop_fragment">ShopFragment</string>
+    <string name="title_activity_shop">ShopActivity</string>
 
 </resources>
