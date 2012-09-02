@@ -151,6 +151,7 @@ public final class R {
         public static final int partie_liste_fragment=0x7f030016;
         public static final int parties_en_attente_layout=0x7f030017;
         public static final int recherche_partie_fragment=0x7f030018;
+        public static final int wait_fragment=0x7f030019;
     }
     public static final class menu {
         public static final int activity_creation_partie=0x7f060000;

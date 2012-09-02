@@ -1,20 +1,29 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import metier.all_purpose.PreferenceKeys;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
+import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.PartiesHelper;
 
 public class RandomPagerActivity extends FragmentActivity {
+
+	boolean loaded;
+
+	Partie[] parties;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -35,6 +44,9 @@ public class RandomPagerActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_random_pager);
+
+		loaded = false;
+
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
 		// of the app.
@@ -44,6 +56,39 @@ public class RandomPagerActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+
+	}
+
+	@Override
+	public View onCreateView(View parent, String name, Context context,
+			AttributeSet attrs) {
+		View vivi = super.onCreateView(parent, name, context, attrs);
+
+		new AsyncTask<String, String, Partie[]>() {
+
+			@Override
+			protected Partie[] doInBackground(String... params) {
+				// Récupèrer parties en cours
+				SharedPreferences prefs = PreferenceManager
+						.getDefaultSharedPreferences(getApplicationContext());
+				return new PartiesHelper().getMesParties(prefs.getInt(
+						PreferenceKeys.USER_ID, 0));
+			}
+
+			@Override
+			protected void onPostExecute(Partie[] result) {
+				parties = result;
+				loaded = true;
+
+				mSectionsPagerAdapter.loadedFragments = new Fragment[result.length];
+				mSectionsPagerAdapter.notifyDataSetChanged();
+
+				super.onPostExecute(result);
+			}
+
+		}.execute("");
+
+		return vivi;
 	}
 
 	@Override
@@ -56,38 +101,70 @@ public class RandomPagerActivity extends FragmentActivity {
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the primary sections of the app.
 	 */
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+	public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
+
+		public Fragment[] loadedFragments;
+
+		public Fragment waitFrag;
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
+			loadedFragments = new Fragment[1];
 		}
 
 		@Override
 		public Fragment getItem(int i) {
-			// Ici, on appelle le Fragment
-			// L'idéal serait de filer l'objet Partie tiré de la DB et
-			// initialiser le contenu du Fragment avec
-			Fragment fragment = new PartieFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-			fragment.setArguments(args);
+			if (i < loadedFragments.length && loadedFragments[i] != null)
+				return loadedFragments[i];
+			Fragment fragment;
+			if (loaded) {
+				// Ici, on appelle le Fragment
+				fragment = new PartieFragment();
+
+				Bundle args = new Bundle();
+
+				args.putParcelable("Partie", parties[i]);
+
+				fragment.setArguments(args);
+
+				loadedFragments[i] = fragment;
+			} else {
+				fragment = new WaitFragment();
+
+				waitFrag = fragment;
+			}
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			// Ici, on set le nombre de Fragments
-			return 8;
+			return loaded ? parties.length : 1;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			if (position == 1) {
-				return "Partie 1";
+			if (loaded) {
+				return parties[position].get_title().toUpperCase();
 			} else {
-				return "Partie 2";
+				return "LOADING";
 			}
 		}
+
+		@Override
+		public int getItemPosition(Object object) {
+			if (object instanceof WaitFragment) {
+				if (loaded) {
+					return POSITION_NONE;
+				} else {
+					return 0;
+				}
+			} else if (object instanceof PartieFragment) {
+				return super.getItemPosition(object);
+			} else {
+				return POSITION_NONE;
+			}
+		}
+
 	}
 
 	public void buttonCurrContractPress(View view) {
@@ -95,30 +172,10 @@ public class RandomPagerActivity extends FragmentActivity {
 		Intent intent = new Intent(view.getContext(),
 				ShowContractActivity.class);
 
-//		TODO PartieFragment fragPartie = (PartieFragment) mSectionsPagerAdapter
-//				.getItem(mViewPager.getCurrentItem());
+		// TODO PartieFragment fragPartie = (PartieFragment)
+		// mSectionsPagerAdapter
+		// .getItem(mViewPager.getCurrentItem());
 
 		startActivity(intent);
-	}
-
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		public DummySectionFragment() {
-		}
-
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			TextView textView = new TextView(getActivity());
-			textView.setGravity(Gravity.CENTER);
-			Bundle args = getArguments();
-			textView.setText(Integer.toString(args.getInt(ARG_SECTION_NUMBER)));
-			return textView;
-		}
 	}
 }

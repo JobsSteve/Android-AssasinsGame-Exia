@@ -1,11 +1,16 @@
 package exia.nancy.caribous.applis.android.assassins.metier.db_objects;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Partie {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-	public final boolean VISIBILITY_PRIVATE = true;
-	public final boolean VISIBILITY_PUBLIC = false;
+public class Partie implements Parcelable {
+
+	public final static boolean VISIBILITY_PRIVATE = true;
+	public final static boolean VISIBILITY_PUBLIC = false;
 
 	private Boolean _visibility;
 	private int _id;
@@ -106,4 +111,62 @@ public class Partie {
 	public void set_zone(String _zone) {
 		this._zone = _zone;
 	}
+
+	public int describeContents() {
+		return 0;
+	}
+
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this._description);
+		dest.writeString(this._title);
+		dest.writeString(this._twitter_hashtag);
+		dest.writeString(this._zone);
+		dest.writeInt(this._id);
+		dest.writeInt(this._maxPlayers);
+		dest.writeInt(this._nbTeams);
+		dest.writeString(this._endDate.toString());
+		dest.writeString(this._startDate.toString());
+		dest.writeString(this._visibility.toString());
+		dest.writeDouble(this._price_contract);
+	}
+
+	public Partie(Parcel in) {
+		this._description = in.readString();
+		this._title = in.readString();
+		this._twitter_hashtag = in.readString();
+		this._zone = in.readString();
+		this._id = in.readInt();
+		this._maxPlayers = in.readInt();
+		this._nbTeams = in.readInt();
+		SimpleDateFormat format = new SimpleDateFormat(
+				"EEE MMM dd HH:mm:ss zzz yyyy");
+		try {
+			this._endDate = format.parse(in.readString());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			this._startDate = format.parse(in.readString());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		this._visibility = Boolean.parseBoolean(in.readString());
+		this._price_contract = in.readDouble();
+	}
+
+	public Partie() {
+
+	}
+
+	public static final Parcelable.Creator<Partie> CREATOR = new Parcelable.Creator<Partie>() {
+
+		public Partie createFromParcel(Parcel source) {
+			return new Partie(source);
+		}
+
+		public Partie[] newArray(int size) {
+			return new Partie[size];
+		}
+	};
 }

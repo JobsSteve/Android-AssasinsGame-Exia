@@ -1,20 +1,22 @@
 package exia.nancy.caribous.applis.android.assassins.metier.server_interacts;
 
-import java.io.StringReader;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
+import metier.all_purpose.HTMLParser;
 import metier.all_purpose.JSONDateConverter;
 import metier.all_purpose.PageLoaderHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
 
@@ -30,14 +32,7 @@ public class PartiesHelper {
 					+ "/page/select/parties.aspx");
 			String response = new PageLoaderHelper().getResponseFromUrl(url);
 
-			Document doc;
-			DocumentBuilderFactory bdf = DocumentBuilderFactory.newInstance();
-
-			DocumentBuilder db = bdf.newDocumentBuilder();
-
-			InputSource inputSource = new InputSource();
-			inputSource.setCharacterStream(new StringReader(response));
-			doc = db.parse(inputSource);
+			Document doc = new HTMLParser().parseSource(response);
 
 			JSONArray partiesArray = new JSONArray(doc
 					.getElementsByTagName("div").item(0).getTextContent());
@@ -48,6 +43,48 @@ public class PartiesHelper {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return listOfParties.toArray(new Partie[listOfParties.size()]);
+	}
+
+	public Partie[] getMesParties(int IdJoueur) {
+
+		ArrayList<Partie> listOfParties = new ArrayList<Partie>();
+
+		try {
+			URL url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
+					+ "/page/select/mesParties.aspx?joueur="
+					+ Integer.toString(IdJoueur));
+
+			String response = new PageLoaderHelper().getResponseFromUrl(url);
+
+			Document doc = new HTMLParser().parseSource(response);
+
+			JSONArray partiesArray = new JSONArray(doc
+					.getElementsByTagName("div").item(0).getTextContent());
+
+			for (int i = 0; i < partiesArray.length(); i++) {
+				try {
+					listOfParties.add(convertJSONToPartie(partiesArray
+							.getJSONObject(i)));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (DOMException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
 			e.printStackTrace();
 		}
 

@@ -1,5 +1,6 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import metier.all_purpose.PreferenceKeys;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,15 +27,16 @@ public class StartScreen extends Activity {
 		handle = new Handler();
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		if (prefs.contains("AuthenticationKeyExiassassins")) {
+		if (prefs.contains(PreferenceKeys.AUTH_KEY)) {
 			Intent i = new Intent(this, MainActivity.class);
-			
-			i.putExtra("Username", prefs.getString("UsernameExiassassins", ""));
-			
+
+			i.putExtra("Username",
+					prefs.getString(PreferenceKeys.USER_NAME, ""));
+
 			// new Thread(){
 			// //TODO Search Player Object from server
 			// }.start();
-			
+
 			startActivity(i);
 			finish();
 		}
@@ -74,12 +76,23 @@ public class StartScreen extends Activity {
 					SharedPreferences prefs = PreferenceManager
 							.getDefaultSharedPreferences(screen);
 					Editor edit = prefs.edit();
-					edit.putString("AuthenticationKeyExiassassins",
-							auth.getToken());
-					edit.putString("UsernameExiassassins", auth.getCurrPlayer()
-							.getPrenom() + " " + auth.getCurrPlayer().getNom());
-					edit.putInt("IdConnectedUserExiassassins", auth
-							.getCurrPlayer().getId());
+					edit.putString(PreferenceKeys.AUTH_KEY, auth.getToken());
+					edit.putString(PreferenceKeys.USER_NAME, auth
+							.getCurrPlayer().getPrenom()
+							+ " "
+							+ auth.getCurrPlayer().getNom());
+					edit.putInt(PreferenceKeys.USER_ID, auth.getCurrPlayer()
+							.getId());
+					edit.putString(PreferenceKeys.USER_MAIL, auth
+							.getCurrPlayer().getMail());
+					edit.putString(PreferenceKeys.USER_PAYS, auth
+							.getCurrPlayer().getPays());
+					edit.putString(PreferenceKeys.USER_BIO, auth
+							.getCurrPlayer().getBiographie());
+					edit.putString(PreferenceKeys.USER_NUMERO, auth
+							.getCurrPlayer().getNumero());
+					edit.putString(PreferenceKeys.USER_PHOTO_URL, auth
+							.getCurrPlayer().getPhoto().getPath());
 					edit.commit();
 				}
 
@@ -96,8 +109,8 @@ public class StartScreen extends Activity {
 							SharedPreferences prefs = PreferenceManager
 									.getDefaultSharedPreferences(screen);
 
-							i.putExtra("Username",
-									prefs.getString("UsernameExiassassins", ""));
+							i.putExtra("Username", prefs.getString(
+									PreferenceKeys.USER_NAME, ""));
 
 							screen.startActivity(i);
 
