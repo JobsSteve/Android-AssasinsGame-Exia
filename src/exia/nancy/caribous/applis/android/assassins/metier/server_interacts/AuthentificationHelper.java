@@ -12,13 +12,19 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import metier.all_purpose.PageLoaderHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Player;
+
 public class AuthentificationHelper {
 
 	private String token;
+
+	private Player currPlayer;
 
 	public boolean authenticate(String username, String password,
 			String appareilId) {
@@ -53,7 +59,11 @@ public class AuthentificationHelper {
 					|| divContent.compareToIgnoreCase("vide") == 0) {
 				return false;
 			} else {
-				token = divContent.replaceAll("\\\"", "");
+				String[] parts = divContent.split("\\{");
+				PlayerHelper phelp = new PlayerHelper();
+				currPlayer = phelp.setWithJSONObject(new JSONObject("{"
+						+ parts[1]));
+				token = parts[0];
 				return true;
 			}
 
@@ -65,12 +75,18 @@ public class AuthentificationHelper {
 			e.printStackTrace();
 		} catch (SAXException e) {
 			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
 
-		return true;
+		return false;
 	}
 
 	public String getToken() {
 		return token;
+	}
+
+	public Player getCurrPlayer() {
+		return currPlayer;
 	}
 }

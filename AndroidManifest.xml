@@ -41,11 +41,6 @@
         <activity
             android:name=".CreationPartieActivity"
             android:label="@string/title_activity_creation_partie" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
@@ -54,11 +49,6 @@
         <activity
             android:name=".StatistiquesActivity"
             android:label="@string/title_activity_statistiques" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ListeContratsActifsActivity"
@@ -67,11 +57,6 @@
         <activity
             android:name=".DescriptionPartie"
             android:label="@string/title_activity_description_partie" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".JoinGame"
@@ -80,56 +65,26 @@
         <activity
             android:name=".PartieAttenteActivity"
             android:label="@string/title_activity_partie_attente" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".FragmentPartieAttente"
             android:label="@string/title_activity_fragment_partie_attente" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".InviterJoueurActivity"
             android:label="@string/title_activity_inviter_joueur" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".InviteJoueurFragment"
             android:label="@string/title_activity_invite_joueur_fragment" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShopFragment"
             android:label="@string/title_activity_shop_fragment" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShopActivity"
             android:label="@string/title_activity_shop" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name="GameSearchActivity" >
         </activity>

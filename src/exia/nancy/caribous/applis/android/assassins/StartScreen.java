@@ -28,8 +28,13 @@ public class StartScreen extends Activity {
 				.getDefaultSharedPreferences(this);
 		if (prefs.contains("AuthenticationKeyExiassassins")) {
 			Intent i = new Intent(this, MainActivity.class);
+			
 			i.putExtra("Username", prefs.getString("UsernameExiassassins", ""));
-
+			
+			// new Thread(){
+			// //TODO Search Player Object from server
+			// }.start();
+			
 			startActivity(i);
 			finish();
 		}
@@ -71,10 +76,10 @@ public class StartScreen extends Activity {
 					Editor edit = prefs.edit();
 					edit.putString("AuthenticationKeyExiassassins",
 							auth.getToken());
-					edit.putString("UsernameExiassassins",
-							((EditText) this.screen
-									.findViewById(R.id.userNameTexBox))
-									.getText().toString());
+					edit.putString("UsernameExiassassins", auth.getCurrPlayer()
+							.getPrenom() + " " + auth.getCurrPlayer().getNom());
+					edit.putInt("IdConnectedUserExiassassins", auth
+							.getCurrPlayer().getId());
 					edit.commit();
 				}
 
@@ -88,9 +93,11 @@ public class StartScreen extends Activity {
 						public void run() {
 							Intent i = new Intent(screen, MainActivity.class);
 
-							i.putExtra("Username", ((EditText) screen
-									.findViewById(R.id.userNameTexBox))
-									.getText().toString());
+							SharedPreferences prefs = PreferenceManager
+									.getDefaultSharedPreferences(screen);
+
+							i.putExtra("Username",
+									prefs.getString("UsernameExiassassins", ""));
 
 							screen.startActivity(i);
 
