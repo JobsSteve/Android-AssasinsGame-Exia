@@ -2,6 +2,8 @@ package exia.nancy.caribous.applis.android.assassins;
 import java.util.ArrayList;
 import java.util.List;
 
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.ObjetFromShop;
+
 
 
 import android.content.Context;
@@ -16,11 +18,11 @@ import android.widget.TextView;
 public class ShopListAdapter extends BaseAdapter
 {
 	private Context mContext;
-    private List<Integer> listPA = new ArrayList<Integer>();
+    private List<ObjetFromShop> listPA = new ArrayList<ObjetFromShop>();
     private LayoutInflater mInflater;
     private int resourceId;
     
-    public ShopListAdapter(Context context, int resourceId, List<Integer> listPA) {
+    public ShopListAdapter(Context context, int resourceId, List<ObjetFromShop> listPA) {
         this.mContext = context;
         this.listPA = listPA;
         this.resourceId = resourceId;
@@ -28,11 +30,13 @@ public class ShopListAdapter extends BaseAdapter
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 }
 
-    public int getCount() {
+    public int getCount() 
+    {
         return listPA.size();
-}
+    }
 
-public Integer getItem(int position) {
+public ObjetFromShop getItem(int position) 
+{
         return listPA.get(position);
 }
 
@@ -46,8 +50,9 @@ public long getItemId(int position) {
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
 		
-		 View view;
+		View view;
         TextView nomObjet;
+        TextView prixObjet;
         Button btnBuy;
         
         
@@ -55,8 +60,14 @@ public long getItemId(int position) {
         {
        	 view = mInflater.inflate(R.layout.fragment_shop, parent, false);
        	 nomObjet = (TextView) view.findViewById(R.id.nomObjet);
+       	 prixObjet = (TextView) view.findViewById(R.id.prixObjet);
        	 btnBuy = (Button) view.findViewById(R.id.btnBuy);
-       	        	 
+       	 
+       	nomObjet.setText(this.getItem(position).get_description());
+       	prixObjet.setText(this.getItem(position).get_prix().toString() + "$");
+       	
+       	
+       	
         }
         else
         {

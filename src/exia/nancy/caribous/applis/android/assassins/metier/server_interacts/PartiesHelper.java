@@ -49,6 +49,38 @@ public class PartiesHelper {
 
 		return listOfParties.toArray(new Partie[listOfParties.size()]);
 	}
+	
+	public Partie getPartie(Integer idPartie)
+	{
+		URL url;
+		Partie PartieJ = new Partie();
+
+		try 
+		{
+			url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
+					+ "/page/select/partie.aspx?partie="+idPartie.toString());
+			String response = new PageLoaderHelper().getResponseFromUrl(url);
+
+			Document doc;
+			DocumentBuilderFactory bdf = DocumentBuilderFactory.newInstance();
+  
+			DocumentBuilder db = bdf.newDocumentBuilder();
+
+			InputSource inputSource = new InputSource();
+			inputSource.setCharacterStream(new StringReader(response));
+			doc = db.parse(inputSource);
+
+			JSONObject partiesArray = new JSONObject(doc.getElementsByTagName("div").item(0).getTextContent());
+			PartieJ = convertJSONToPartie(partiesArray);
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+
+		return PartieJ;
+	}
 
 	public Partie[] getMesParties(int IdJoueur) {
 

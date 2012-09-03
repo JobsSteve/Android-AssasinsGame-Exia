@@ -1,14 +1,20 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.ObjetFromShop;
+import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.ShopHelper;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.widget.ListView;
 
-public class ShopActivity extends Activity {
+public class ShopActivity extends Activity 
+{
 
 	private ShopListAdapter listPAAdapter;
 	
@@ -17,34 +23,14 @@ public class ShopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         
-        List<Integer> listPA = new ArrayList<Integer>();
-        listPA.add(1);
-        listPA.add(2);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
-        listPA.add(5);
-        listPA.add(7);
+        ArrayList<ObjetFromShop> listPA = new ArrayList<ObjetFromShop>();
+        
+        new DownloadObjets().execute(1);
         
         
-         
-        listPAAdapter = new ShopListAdapter(getApplicationContext(),0, listPA);
-         
-        // ArrayAdapter adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, listPA);
-     
-         
-         ((ListView)this.findViewById(R.id.listViewObjets)).setAdapter(listPAAdapter);
+        
+      
+        
     }
 
     @Override
@@ -52,4 +38,29 @@ public class ShopActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_shop, menu);
         return true;
     }
+    
+    
+    private class DownloadObjets extends AsyncTask<Integer, Integer, ArrayList<ObjetFromShop>> 
+    {
+        protected ArrayList<ObjetFromShop> doInBackground(Integer... params) 
+        {
+        	ShopHelper shopHelp = new ShopHelper();
+            return shopHelp.getObjets();
+        }
+
+        protected void onProgressUpdate(Integer... progress) 
+        {
+           
+        }
+
+        protected void onPostExecute(ArrayList<ObjetFromShop> result) 
+        {
+        	  listPAAdapter = new ShopListAdapter(getApplicationContext(),0, result);
+              
+              ((ListView)findViewById(R.id.listViewObjets)).setAdapter(listPAAdapter);
+        }
+    }
+    
 }
+
+
