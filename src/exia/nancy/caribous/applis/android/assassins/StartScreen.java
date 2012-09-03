@@ -14,6 +14,7 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.AuthentificationHelper;
 
 public class StartScreen extends Activity {
@@ -116,6 +117,15 @@ public class StartScreen extends Activity {
 							screen.startActivity(i);
 
 							screen.finish();
+						}
+					});
+				} else {
+					handle.post(new Runnable() {
+
+						public void run() {
+							Toast.makeText(screen,
+									"Mauvaise combinaison Password/Username",
+									Toast.LENGTH_SHORT).show();
 						}
 					});
 				}

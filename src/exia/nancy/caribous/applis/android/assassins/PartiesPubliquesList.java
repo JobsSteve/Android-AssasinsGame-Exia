@@ -1,5 +1,7 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import java.util.Map;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +23,10 @@ public class PartiesPubliquesList extends Fragment {
 
 	private Handler handler;
 
+	private boolean isSearch = false;
+
+	private Map<String, String> paramsFromBundle;
+
 	// TODO AsyncTask pour récupérer les prochaines parties publiques non
 	// commencées
 	// AsyncTask<Params, Progress, Result>
@@ -40,7 +46,13 @@ public class PartiesPubliquesList extends Fragment {
 				}
 			});
 
-			Partie[] parties = new PartiesHelper().getNewPublicGames(fromItemNum);
+			Partie[] parties;
+
+			if (isSearch) {
+				parties = new PartiesHelper().getNewPublicGames(fromItemNum);
+			} else {
+				parties = new PartiesHelper().getNewPublicGames(fromItemNum);
+			}
 
 			fromItemNum += 20;
 			return parties;
@@ -123,11 +135,6 @@ public class PartiesPubliquesList extends Fragment {
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-	}
-
-	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 
 		new GetGamesAsyncTask().execute(0);
@@ -137,6 +144,14 @@ public class PartiesPubliquesList extends Fragment {
 
 	public void loadMore() {
 		new GetGamesAsyncTask().execute(0);
+	}
+
+	public void setSearch(boolean isSearch) {
+		this.isSearch = isSearch;
+	}
+
+	public void setParamsFromBundle(Map<String, String> paramsFromBundle) {
+		this.paramsFromBundle = paramsFromBundle;
 	}
 
 }

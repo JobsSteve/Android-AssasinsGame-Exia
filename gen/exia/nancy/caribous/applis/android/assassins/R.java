@@ -59,7 +59,7 @@ public final class R {
         public static final int location_text_edit=0x7f07002d;
         public static final int location_textview=0x7f070027;
         public static final int logInButton=0x7f070034;
-        public static final int menu_settings=0x7f07006b;
+        public static final int menu_settings=0x7f07006c;
         public static final int minimumJoueur=0x7f07000a;
         public static final int name_of_game=0x7f07004e;
         public static final int nbInscrits=0x7f070012;
@@ -82,11 +82,12 @@ public final class R {
         public static final int pager_title_strip=0x7f070018;
         public static final int partie_privee_search_button=0x7f070046;
         public static final int partie_privee_textview=0x7f070056;
+        public static final int parties_publiques_list_fragment=0x7f070064;
         public static final int passwordTextBox=0x7f070032;
         public static final int password_textedit=0x7f07002c;
         public static final int patie_a_chercher=0x7f070045;
         public static final int pays_text_edit=0x7f07002e;
-        public static final int pays_textedit=0x7f070069;
+        public static final int pays_textedit=0x7f07006a;
         public static final int photo_textedit=0x7f070028;
         public static final int prenom_textedit=0x7f07002a;
         public static final int progressBar=0x7f070060;
@@ -95,7 +96,7 @@ public final class R {
         public static final int pseudoSearch=0x7f070014;
         public static final int pseudo_textedit=0x7f07002b;
         public static final int quickContactBadge1=0x7f07001a;
-        public static final int radioGroup1=0x7f070064;
+        public static final int radioGroup1=0x7f070065;
         public static final int radioGroupPubPriv=0x7f070000;
         public static final int radioGroupSoloTeam=0x7f070003;
         public static final int radioPriv=0x7f070002;
@@ -104,10 +105,10 @@ public final class R {
         public static final int radioTeam=0x7f070005;
         public static final int scrollView1=0x7f070019;
         public static final int searchButton=0x7f070015;
-        public static final int searchItem=0x7f07006c;
-        public static final int search_button=0x7f07006a;
+        public static final int searchItem=0x7f07006d;
+        public static final int search_button=0x7f07006b;
         public static final int signInButton=0x7f070033;
-        public static final int solo_radiobutton=0x7f070067;
+        public static final int solo_radiobutton=0x7f070068;
         public static final int start_date=0x7f070054;
         public static final int survivors_left=0x7f07005b;
         public static final int tab_view_layout=0x7f070062;
@@ -115,15 +116,15 @@ public final class R {
         public static final int tagTwitter=0x7f07000f;
         public static final int targetPhoto=0x7f07003e;
         public static final int target_pseudo=0x7f070040;
-        public static final int team_radiobutton=0x7f070066;
+        public static final int team_radiobutton=0x7f070067;
         public static final int teams_set=0x7f07005d;
         public static final int textView1=0x7f07001b;
-        public static final int tout_radiobutton=0x7f070065;
+        public static final int tout_radiobutton=0x7f070066;
         public static final int twitter_tag=0x7f07005a;
         public static final int userNameTexBox=0x7f070031;
         public static final int utiliser_objet=0x7f070042;
         public static final int view1=0x7f07004c;
-        public static final int ville_textedit=0x7f070068;
+        public static final int ville_textedit=0x7f070069;
     }
     public static final class layout {
         public static final int activity_creation_partie=0x7f030000;
@@ -150,8 +151,9 @@ public final class R {
         public static final int partie_fragment=0x7f030015;
         public static final int partie_liste_fragment=0x7f030016;
         public static final int parties_en_attente_layout=0x7f030017;
-        public static final int recherche_partie_fragment=0x7f030018;
-        public static final int wait_fragment=0x7f030019;
+        public static final int parties_publiques_list_fragment=0x7f030018;
+        public static final int recherche_partie_fragment=0x7f030019;
+        public static final int wait_fragment=0x7f03001a;
     }
     public static final class menu {
         public static final int activity_creation_partie=0x7f060000;
