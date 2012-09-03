@@ -49,33 +49,23 @@ public class PartiesHelper {
 
 		return listOfParties.toArray(new Partie[listOfParties.size()]);
 	}
-	
-	public Partie getPartie(Integer idPartie)
-	{
+
+	public Partie getPartie(Integer idPartie) {
 		URL url;
 		Partie PartieJ = new Partie();
 
-		try 
-		{
+		try {
 			url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
-					+ "/page/select/partie.aspx?partie="+idPartie.toString());
+					+ "/page/select/partie.aspx?partie=" + idPartie.toString());
 			String response = new PageLoaderHelper().getResponseFromUrl(url);
 
-			Document doc;
-			DocumentBuilderFactory bdf = DocumentBuilderFactory.newInstance();
-  
-			DocumentBuilder db = bdf.newDocumentBuilder();
+			Document doc = new HTMLParser().parseSource(response);
 
-			InputSource inputSource = new InputSource();
-			inputSource.setCharacterStream(new StringReader(response));
-			doc = db.parse(inputSource);
-
-			JSONObject partiesArray = new JSONObject(doc.getElementsByTagName("div").item(0).getTextContent());
+			JSONObject partiesArray = new JSONObject(doc
+					.getElementsByTagName("div").item(0).getTextContent());
 			PartieJ = convertJSONToPartie(partiesArray);
-			
-		} 
-		catch (Exception e) 
-		{
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

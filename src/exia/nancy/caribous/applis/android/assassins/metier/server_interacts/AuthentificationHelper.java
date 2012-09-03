@@ -1,21 +1,18 @@
 package exia.nancy.caribous.applis.android.assassins.metier.server_interacts;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import metier.all_purpose.HTMLParser;
 import metier.all_purpose.PageLoaderHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Player;
@@ -41,14 +38,7 @@ public class AuthentificationHelper {
 							+ "/page/create/connexion.aspx"),
 					argumentsOfRequest);
 
-			Document doc;
-			DocumentBuilderFactory bdf = DocumentBuilderFactory.newInstance();
-
-			DocumentBuilder db = bdf.newDocumentBuilder();
-
-			InputSource inputSource = new InputSource();
-			inputSource.setCharacterStream(new StringReader(serverResponse));
-			doc = db.parse(inputSource);
+			Document doc = new HTMLParser().parseSource(serverResponse);
 
 			doc.getElementsByTagName("div");
 
