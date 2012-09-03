@@ -91,8 +91,9 @@ public class StartScreen extends Activity {
 							.getCurrPlayer().getBiographie());
 					edit.putString(PreferenceKeys.USER_NUMERO, auth
 							.getCurrPlayer().getNumero());
-					edit.putString(PreferenceKeys.USER_PHOTO_URL, auth
-							.getCurrPlayer().getPhoto().getPath());
+					if (auth.getCurrPlayer().getPhoto() != null)
+						edit.putString(PreferenceKeys.USER_PHOTO_URL, auth
+								.getCurrPlayer().getPhoto().getPath());
 					edit.commit();
 				}
 

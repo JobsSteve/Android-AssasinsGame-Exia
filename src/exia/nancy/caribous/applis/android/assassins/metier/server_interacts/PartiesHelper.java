@@ -22,14 +22,15 @@ import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
 
 public class PartiesHelper {
 
-	public Partie[] getNewGames() {
+	public Partie[] getNewPublicGames(int fromItemNum) {
 
 		URL url;
 		ArrayList<Partie> listOfParties = new ArrayList<Partie>();
 
 		try {
 			url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
-					+ "/page/select/parties.aspx");
+					+ "/page/select/partiePublicLimite.aspx?start="
+					+ fromItemNum + "&nombre=20");
 			String response = new PageLoaderHelper().getResponseFromUrl(url);
 
 			Document doc = new HTMLParser().parseSource(response);

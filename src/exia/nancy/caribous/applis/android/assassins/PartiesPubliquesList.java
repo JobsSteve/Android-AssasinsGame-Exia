@@ -40,7 +40,7 @@ public class PartiesPubliquesList extends Fragment {
 				}
 			});
 
-			Partie[] parties = new PartiesHelper().getNewGames();
+			Partie[] parties = new PartiesHelper().getNewPublicGames(fromItemNum);
 
 			fromItemNum += 20;
 			return parties;
