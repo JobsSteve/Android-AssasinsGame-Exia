@@ -49,8 +49,11 @@ public class SearchResults extends FragmentActivity {
 	}
 
 	public void loadMore(View view) {
-
 		ppl.loadMore();
+	}
+
+	public void afficherDescriptionButtonPress(View view) {
+		ppl.afficherDescriptionButtonPress(view);
 	}
 
 }

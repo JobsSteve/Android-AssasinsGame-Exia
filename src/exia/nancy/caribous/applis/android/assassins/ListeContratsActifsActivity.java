@@ -1,14 +1,22 @@
 package exia.nancy.caribous.applis.android.assassins;
 
-import java.util.ArrayList;
-
+import metier.all_purpose.PreferenceKeys;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.Menu;
+import android.view.View;
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Contract;
+import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.ContratHelper;
 
 public class ListeContratsActifsActivity extends FragmentActivity {
 
@@ -27,7 +35,9 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
-	ArrayList<ShowContractInfo> contracts;
+	Contract[] targets;
+
+	boolean loaded;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -43,8 +53,40 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-		contracts = new ArrayList<ShowContractInfo>();
+		loaded = false;
 
+	}
+
+	@Override
+	public View onCreateView(String name, Context context, AttributeSet attrs) {
+		// TODO Auto-generated method stub
+
+		View vivi = super.onCreateView(name, context, attrs);
+
+		new AsyncTask<String, String, Contract[]>() {
+
+			@Override
+			protected Contract[] doInBackground(String... params) {
+				// Récupèrer parties en cours
+				SharedPreferences prefs = PreferenceManager
+						.getDefaultSharedPreferences(getApplicationContext());
+				return new ContratHelper().getContratsEnCoursForPlayer(prefs
+						.getInt(PreferenceKeys.USER_ID, 0));
+			}
+
+			@Override
+			protected void onPostExecute(Contract[] result) {
+				targets = result;
+				loaded = true;
+
+				mSectionsPagerAdapter.notifyDataSetChanged();
+
+				super.onPostExecute(result);
+			}
+
+		}.execute("");
+
+		return vivi;
 	}
 
 	@Override
@@ -57,7 +99,9 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
 	 * one of the primary sections of the app.
 	 */
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+	public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
+
+		int nbContracts;
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -65,29 +109,47 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 
 		@Override
 		public Fragment getItem(int i) {
-			Fragment fragment = new ShowContractInfo();
-			// Bundle args = new Bundle();
-			// args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, i + 1);
-			// fragment.setArguments(args);
+			Fragment fragment;
+
+			if (loaded) {
+				fragment = new ShowContractInfo();
+
+				((ShowContractInfo) fragment).setTarget(targets[i]);
+
+			} else {
+				fragment = new WaitFragment();
+			}
+
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			return 3;
+			return loaded ? nbContracts : 0;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase();
-			case 1:
-				return getString(R.string.title_section2).toUpperCase();
-			case 2:
-				return getString(R.string.title_section3).toUpperCase();
+			if (loaded) {
+				return "PARTIE " + position;
+			} else {
+				return "LOADING";
 			}
-			return null;
+		}
+
+		@Override
+		public int getItemPosition(Object object) {
+			if (object instanceof WaitFragment) {
+				if (loaded) {
+					return POSITION_NONE;
+				} else {
+					return 0;
+				}
+			} else if (object instanceof ShowContractInfo) {
+				return super.getItemPosition(object);
+			} else {
+				return POSITION_NONE;
+			}
 		}
 	}
 }

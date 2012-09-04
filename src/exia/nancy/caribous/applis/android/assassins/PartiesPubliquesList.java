@@ -1,7 +1,9 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,13 +29,16 @@ public class PartiesPubliquesList extends Fragment {
 
 	private Map<String, String> paramsFromBundle;
 
-	// TODO AsyncTask pour récupérer les prochaines parties publiques non
+	private ArrayList<Partie> partiesFetched;
+
+	// AsyncTask pour récupérer les prochaines parties publiques non
 	// commencées
 	// AsyncTask<Params, Progress, Result>
 	public class GetGamesAsyncTask extends AsyncTask<Integer, String, Partie[]> {
 
 		@Override
 		protected Partie[] doInBackground(Integer... params) {
+
 			handler.post(new Runnable() {
 
 				public void run() {
@@ -54,7 +59,6 @@ public class PartiesPubliquesList extends Fragment {
 				parties = new PartiesHelper().getNewPublicGames(fromItemNum);
 			}
 
-			fromItemNum += 20;
 			return parties;
 		}
 
@@ -102,6 +106,9 @@ public class PartiesPubliquesList extends Fragment {
 				dateEnd.setText(DateFormat.format("yy/MM/dd hh:mm",
 						result[i].get_endDate()));
 
+				newTabView.findViewById(R.id.button1).setTag(i);
+
+				partiesFetched.add(result[i]);
 			}
 			// On dismiss la progressbar
 			ProgressBar pb = ((ProgressBar) getActivity().findViewById(
@@ -114,6 +121,7 @@ public class PartiesPubliquesList extends Fragment {
 			tabLay.removeView(imgBut);
 			tabLay.addView(imgBut);
 			imgBut.setVisibility(View.VISIBLE);
+			fromItemNum += result.length;
 		}
 
 		public void setResult(Partie[] res) {
@@ -125,6 +133,8 @@ public class PartiesPubliquesList extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		this.handler = new Handler();
 		super.onCreate(savedInstanceState);
+
+		this.partiesFetched = new ArrayList<Partie>();
 	}
 
 	@Override
@@ -154,4 +164,13 @@ public class PartiesPubliquesList extends Fragment {
 		this.paramsFromBundle = paramsFromBundle;
 	}
 
+	public void afficherDescriptionButtonPress(View view) {
+		Integer idPartie = (Integer) view.getTag();
+		Partie currPartie = this.partiesFetched.get(idPartie);
+
+		Intent intent = new Intent(view.getContext(), DescriptionPartieActivity.class);
+		intent.putExtra("Partie", currPartie);
+		
+		startActivity(intent);
+	}
 }
