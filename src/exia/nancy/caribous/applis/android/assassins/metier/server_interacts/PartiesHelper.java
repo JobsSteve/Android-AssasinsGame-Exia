@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -21,6 +23,51 @@ import org.xml.sax.SAXException;
 import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
 
 public class PartiesHelper {
+	
+	
+	public boolean createPartie(boolean pub, boolean solo, String nomPartie, String descriptionPartie, 
+			String nbJoueur, String dollarPerContrat, String nbEquipe ,String dateDebut)
+	{
+		HashMap<String, String> argumentsOfRequest = new HashMap<String, String>();
+
+		
+		try
+		{
+			if (pub)
+			argumentsOfRequest.put("cbPrive", "on"); 
+			
+			if (!solo)
+			argumentsOfRequest.put("txtNbEquipe", nbEquipe);
+			
+			argumentsOfRequest.put("txtTitre", nomPartie);
+			argumentsOfRequest.put("txtDescription", descriptionPartie);
+			
+			
+			Integer nbJoueurInt = Integer.parseInt(nbJoueur);
+			argumentsOfRequest.put("txtNbParticipant", nbJoueurInt.toString());
+			
+			Double dollarPerContratDouble = Double.parseDouble(dollarPerContrat);
+			argumentsOfRequest.put("txtPrix", dollarPerContratDouble.toString());
+			
+			
+			argumentsOfRequest.put("txtDateDebut", dateDebut);
+			
+			String serverResponse = new PageLoaderHelper().sendPostDataToUrl(
+					new URL(PageLoaderHelper.SERVER_URL_AND_PORT + "/page/create/creerPartie.aspx"),argumentsOfRequest);
+			
+			String lu = serverResponse;
+			
+			
+			
+		
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
 
 	public Partie[] getNewPublicGames(int fromItemNum) {
 

@@ -59,8 +59,8 @@ public final class R {
         public static final int location_textview=0x7f070026;
         public static final int logInButton=0x7f070033;
         public static final int menu_settings=0x7f07006c;
-        public static final int minimumJoueur=0x7f07000a;
         public static final int name_of_game=0x7f07004e;
+        public static final int nbEquipe=0x7f07000a;
         public static final int nbInscrits=0x7f070011;
         public static final int nbJouees=0x7f070036;
         public static final int nbKill=0x7f070034;
@@ -209,6 +209,7 @@ public final class R {
         public static final int menu_settings=0x7f040001;
         public static final int minijoueur_string=0x7f04004a;
         public static final int name_textbox_hint=0x7f040025;
+        public static final int nb_equipe_string=0x7f040058;
         public static final int nb_of_players_string=0x7f040035;
         public static final int nb_participants_string=0x7f040017;
         public static final int nb_teams_string=0x7f04001a;

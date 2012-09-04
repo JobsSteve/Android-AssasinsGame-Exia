@@ -66,12 +66,12 @@
 	    android:layout_height="wrap_content"
 	    android:hint="@string/dollarpercontrat_string"
 	    android:inputType="numberDecimal" />
-
+
 	<EditText
-	    android:id="@+id/minimumJoueur"
+	    android:id="@+id/nbEquipe"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:hint="@string/minijoueur_string"
+	    android:hint="@string/nb_equipe_string"
 	    android:inputType="numberSigned" />
 
 	<EditText

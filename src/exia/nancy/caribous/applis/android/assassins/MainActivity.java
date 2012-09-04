@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void goToPartieAttente(View view) {
-		Intent i = new Intent(view.getContext(), DescriptionPartie.class);
+		Intent i = new Intent(view.getContext(), InviterJoueurActivity.class);
 		startActivity(i);
 	}
 }
