@@ -82,6 +82,11 @@ public class JoinGame extends FragmentActivity implements ActionBar.TabListener 
 		return true;
 	}
 
+	public void afficherDescriptionButtonPress(View view) {
+		((PartiesPubliquesList) mSectionsPagerAdapter.getItem(mViewPager
+				.getCurrentItem())).afficherDescriptionButtonPress(view);
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.searchItem) {

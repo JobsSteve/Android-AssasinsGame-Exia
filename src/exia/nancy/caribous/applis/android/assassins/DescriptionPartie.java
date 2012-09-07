@@ -1,5 +1,9 @@
 package exia.nancy.caribous.applis.android.assassins;
 
+import java.util.ArrayList;
+
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
+import exia.nancy.caribous.applis.android.assassins.metier.server_interacts.PartiesHelper;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,8 +65,9 @@ public class DescriptionPartie extends Fragment {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+        	
+        }
 
-		}
-
-	}
+		
+    }
 }

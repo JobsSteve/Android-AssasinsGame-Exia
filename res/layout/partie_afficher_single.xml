@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="@string/NameOfGame"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -18,6 +18,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/name_of_game"
         android:layout_marginTop="18dp"
+        android:onClick="afficherDescriptionButtonPress"
         android:text="@string/join_alternate_string" />
 
     <TextView

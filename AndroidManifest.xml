@@ -55,10 +55,6 @@
             android:label="@string/title_activity_liste_contrats_actifs" >
         </activity>
         <activity
-            android:name=".DescriptionPartie"
-            android:label="@string/title_activity_description_partie" >
-        </activity>
-        <activity
             android:name=".JoinGame"
             android:label="@string/title_activity_join_game" >
         </activity>
@@ -89,6 +85,7 @@
         <activity android:name="GameSearchActivity" >
         </activity>
         <activity android:name="SearchResults"></activity>
+        <activity android:name="DescriptionPartieActivity"></activity>
     </application>
 
 </manifest>
