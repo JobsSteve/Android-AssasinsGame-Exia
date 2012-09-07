@@ -82,11 +82,12 @@ public class ContratHelper {
 
 			PlayerHelper playHel = new PlayerHelper();
 
-			tempCon.setId(arrayOfPlayers.getJSONObject(0).getInt("idContrat"));
+			// tempCon.setId(arrayOfPlayers.getJSONObject(0).getInt("idContrat"));
 			tempCon.setTarget(playHel.setWithJSONObject(arrayOfPlayers
 					.getJSONObject(0)));
-			tempCon.setIdPartie(arrayOfPlayers.getJSONObject(0).getInt(
-					"idPartie"));
+			// tempCon.setIdPartie(arrayOfPlayers.getJSONObject(0).getInt(
+			// "idPartie"));
+			tempCon.setIdPartie(gameId);
 
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

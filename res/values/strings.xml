@@ -89,5 +89,6 @@
     <string name="title_activity_shop_fragment">ShopFragment</string>
     <string name="title_activity_shop">ShopActivity</string>
     <string name="button_shop_string">Achat objets</string>
+    <string name="num_telephone_textedit">Téléphone</string>
 
 </resources>

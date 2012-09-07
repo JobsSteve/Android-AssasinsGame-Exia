@@ -7,7 +7,7 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentRight="true"
     android:layout_alignParentTop="true" >
-
+
     <RelativeLayout
         android:id="@+id/location_textview"
         android:layout_width="fill_parent"
@@ -103,15 +103,36 @@
             android:ems="10"
             android:hint="@string/mail_address_textedit"
             android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/bio_text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/choix_mail_textedit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/choix_mail_textedit"
+            android:ems="10"
+            android:hint="@string/biography_textview_string"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/numero_text_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/bio_text_edit"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/bio_text_edit"
+            android:ems="10"
+            android:hint="@string/num_telephone_textedit" />
 
         <Button
             android:id="@+id/button_finish_registration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/choix_mail_textedit"
-            android:layout_marginRight="21dp"
-            android:layout_marginTop="17dp"
+            android:layout_below="@+id/numero_text_edit"
+            android:layout_marginRight="34dp"
+            android:layout_marginTop="40dp"
             android:onClick="finishRegistration"
             android:text="@string/terminer_button" />
 
