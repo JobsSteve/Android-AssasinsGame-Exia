@@ -2,13 +2,52 @@ package exia.nancy.caribous.applis.android.assassins.metier.server_interacts;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
+import metier.all_purpose.HTMLParser;
+import metier.all_purpose.PageLoaderHelper;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
 
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Partie;
 import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Player;
 
 public class PlayerHelper {
+	
+	
+	public ArrayList<Player> getPlayers(String recherche)
+	{
+		URL url;
+		ArrayList<Player> listOfPlayers = new ArrayList<Player>();
+		try 
+		{
+			HTMLParser htmlp = new HTMLParser();
+			url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT + "/page/select/joueurRecherche.aspx?recherche="+ recherche);
+			
+			String response = new PageLoaderHelper().getResponseFromUrl(url);
+			
+			Document doc = htmlp.parseSource(response);
+			
+			JSONArray joueurArray = new JSONArray(doc.getElementsByTagName("div").item(0).getTextContent());
+			
+			for (int i = 0; i < joueurArray.length(); i++) 
+			{
+				listOfPlayers.add(setWithJSONObject(joueurArray.getJSONObject(i)));
+			}
+			
+		
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		return listOfPlayers;
+		
+	}
 
 	public Player setWithJSONObject(JSONObject obj) {
 		Player resultPlayer = new Player();

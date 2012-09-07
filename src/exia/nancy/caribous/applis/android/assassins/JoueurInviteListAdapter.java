@@ -3,6 +3,8 @@ package exia.nancy.caribous.applis.android.assassins;
 import java.util.ArrayList;
 import java.util.List;
 
+import exia.nancy.caribous.applis.android.assassins.metier.db_objects.Player;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +16,11 @@ import android.widget.TextView;
 public class JoueurInviteListAdapter extends BaseAdapter
 {
 	 private Context mContext;
-    private List<Integer> listPA = new ArrayList<Integer>();
+    private ArrayList<Player> listPA = new ArrayList<Player>();
     private LayoutInflater mInflater;
     private int resourceId;
     
-    public JoueurInviteListAdapter(Context context, int resourceId, List<Integer> listPA) 
+    public JoueurInviteListAdapter(Context context, int resourceId, ArrayList<Player> listPA) 
     {
         this.mContext = context;
         this.listPA = listPA;
@@ -32,7 +34,7 @@ public class JoueurInviteListAdapter extends BaseAdapter
         return listPA.size();
     }
 
-	public Integer getItem(int position) 
+	public Player getItem(int position) 
 	{
 	        return listPA.get(position);
 	}
@@ -45,7 +47,6 @@ public class JoueurInviteListAdapter extends BaseAdapter
 
 	public View getView(int position, View convertView, ViewGroup parent) 
 	{
-		System.out.println("LULU");
 		View view;
         TextView pseudoPerso;
         Button btnClose;
@@ -56,6 +57,8 @@ public class JoueurInviteListAdapter extends BaseAdapter
    	 		pseudoPerso = (TextView) view.findViewById(R.id.pseudoPerso);
  
    	 		btnClose = (Button) view.findViewById(R.id.btnInvit);
+   	 		
+   	 		pseudoPerso.setText(this.getItem(position).getPrenom() + " " + this.getItem(position).getNom());
        	        	 
         }
         else
