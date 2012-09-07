@@ -78,8 +78,7 @@ public class PartiesHelper {
 
 		try {
 			URL url = new URL(PageLoaderHelper.SERVER_URL_AND_PORT
-					+ "/page/select/mesParties.aspx?joueur="
-					+ Integer.toString(IdJoueur));
+					+ "/page/select/parties.aspx");
 
 			String response = new PageLoaderHelper().getResponseFromUrl(url);
 

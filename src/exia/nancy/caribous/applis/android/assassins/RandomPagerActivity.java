@@ -57,13 +57,6 @@ public class RandomPagerActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-	}
-
-	@Override
-	public View onCreateView(View parent, String name, Context context,
-			AttributeSet attrs) {
-		View vivi = super.onCreateView(parent, name, context, attrs);
-
 		new AsyncTask<String, String, Partie[]>() {
 
 			@Override
@@ -87,6 +80,13 @@ public class RandomPagerActivity extends FragmentActivity {
 			}
 
 		}.execute("");
+
+	}
+
+	@Override
+	public View onCreateView(View parent, String name, Context context,
+			AttributeSet attrs) {
+		View vivi = super.onCreateView(parent, name, context, attrs);
 
 		return vivi;
 	}
@@ -144,12 +144,15 @@ public class RandomPagerActivity extends FragmentActivity {
 		@Override
 		public CharSequence getPageTitle(int position) {
 			if (loaded) {
-				return parties[position].get_title().toUpperCase();
+				if (parties.length > 0)
+					return parties[position].get_title().toUpperCase();
+				else
+					return "";
 			} else {
 				return "LOADING";
 			}
 		}
-
+		
 		@Override
 		public int getItemPosition(Object object) {
 			if (object instanceof WaitFragment) {
@@ -171,6 +174,9 @@ public class RandomPagerActivity extends FragmentActivity {
 		// On appelle le détail du contrat
 		Intent intent = new Intent(view.getContext(),
 				ShowContractActivity.class);
+
+		int partieId = this.parties[mViewPager.getCurrentItem()].get_id();
+		intent.putExtra("partieId", partieId);
 
 		// TODO PartieFragment fragPartie = (PartieFragment)
 		// mSectionsPagerAdapter

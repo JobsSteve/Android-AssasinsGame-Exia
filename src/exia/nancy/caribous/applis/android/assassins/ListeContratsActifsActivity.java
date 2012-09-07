@@ -43,6 +43,7 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_liste_contrats_actifs);
+
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections
 		// of the app.
@@ -54,14 +55,6 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 		loaded = false;
-
-	}
-
-	@Override
-	public View onCreateView(String name, Context context, AttributeSet attrs) {
-		// TODO Auto-generated method stub
-
-		View vivi = super.onCreateView(name, context, attrs);
 
 		new AsyncTask<String, String, Contract[]>() {
 
@@ -85,6 +78,13 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 			}
 
 		}.execute("");
+	}
+
+	@Override
+	public View onCreateView(View parent, String name, Context context,
+			AttributeSet attrs) {
+
+		View vivi = super.onCreateView(parent, name, context, attrs);
 
 		return vivi;
 	}
@@ -100,8 +100,6 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 	 * one of the primary sections of the app.
 	 */
 	public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
-
-		int nbContracts;
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -125,7 +123,7 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 
 		@Override
 		public int getCount() {
-			return loaded ? nbContracts : 0;
+			return loaded ? targets.length : 1;
 		}
 
 		@Override
@@ -145,11 +143,13 @@ public class ListeContratsActifsActivity extends FragmentActivity {
 				} else {
 					return 0;
 				}
-			} else if (object instanceof ShowContractInfo) {
+			} else if (object instanceof PartieFragment) {
 				return super.getItemPosition(object);
 			} else {
 				return POSITION_NONE;
 			}
 		}
+
 	}
+
 }

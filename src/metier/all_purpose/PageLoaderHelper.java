@@ -22,7 +22,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 public class PageLoaderHelper {
 
-	public static final String SERVER_URL_AND_PORT = "http://192.168.1.5:8080";
+	public static final String SERVER_URL_AND_PORT = "http://192.168.1.3:8080";
 
 	public String getResponseFromUrl(URL url) throws IOException {
 		int read;

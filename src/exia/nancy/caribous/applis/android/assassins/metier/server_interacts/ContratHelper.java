@@ -62,4 +62,49 @@ public class ContratHelper {
 
 		return contracts.toArray(new Contract[contracts.size()]);
 	}
+
+	public Contract getContractForPlayerAndGame(int playerId, int gameId) {
+		Contract tempCon = new Contract();
+		try {
+
+			String response = new PageLoaderHelper()
+					.getResponseFromUrl(new URL(
+							PageLoaderHelper.SERVER_URL_AND_PORT
+									+ "/page/select/ContratJoueurPartie.aspx?joueur="
+									+ playerId + "&partie=" + gameId));
+
+			Document doc = new HTMLParser().parseSource(response);
+
+			String content = doc.getElementsByTagName("div").item(0)
+					.getTextContent();
+
+			JSONArray arrayOfPlayers = new JSONArray(content);
+
+			PlayerHelper playHel = new PlayerHelper();
+
+			tempCon.setId(arrayOfPlayers.getJSONObject(0).getInt("idContrat"));
+			tempCon.setTarget(playHel.setWithJSONObject(arrayOfPlayers
+					.getJSONObject(0)));
+			tempCon.setIdPartie(arrayOfPlayers.getJSONObject(0).getInt(
+					"idPartie"));
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return tempCon;
+	}
 }
