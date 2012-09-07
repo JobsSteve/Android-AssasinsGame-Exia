@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class CreationPartieActivity extends Activity {
 
@@ -38,8 +41,42 @@ public class CreationPartieActivity extends Activity {
     {
         protected Boolean doInBackground(Integer... params) 
         {
+        	EditText txtNompartie = (EditText) findViewById(R.id.nomPartie);
+        	EditText txtDescription = (EditText) findViewById(R.id.descriptionPartie);
+        	EditText txtNbJoueur = (EditText) findViewById(R.id.nombreDeJoueur);
+        	EditText txtDollarContrat = (EditText) findViewById(R.id.dollarContrat);
+        	EditText txtnbEquipe = (EditText) findViewById(R.id.nbEquipe);
+        	EditText txtdateDebut= (EditText) findViewById(R.id.dateDebut);
+        	
+        	RadioGroup pubPriv = (RadioGroup) findViewById(R.id.radioGroupPubPriv);
+        	RadioGroup soloTeam = (RadioGroup) findViewById(R.id.radioGroupSoloTeam);
+        	
+        	boolean priveP = true;
+        	
+        	if (pubPriv.getCheckedRadioButtonId() == R.id.radioPub)
+        	{
+        		priveP = false;
+        	}
+        	else if (pubPriv.getCheckedRadioButtonId() == R.id.radioPriv)
+        	{
+        		priveP = true;
+        	}
+        	
+    		boolean teamP = true;
+        	
+        	if (soloTeam.getCheckedRadioButtonId() == R.id.radioSolo)
+        	{
+        		priveP = true;
+        	}
+        	else if (soloTeam.getCheckedRadioButtonId() == R.id.radioTeam)
+        	{
+        		priveP = false;
+        	}
+        	
         	PartiesHelper ph = new PartiesHelper();
-        	ph.createPartie(true, true, "tamere", "casse les burnes", "5", "8", "5", "06/06/06");
+        	ph.createPartie(priveP, teamP, txtNompartie.getText().toString(), txtDescription.getText().toString(), 
+        			txtNbJoueur.getText().toString(),txtDollarContrat.getText().toString(),txtnbEquipe.getText().toString(), 
+        			txtdateDebut.getText().toString());
         	return true;
         }
 

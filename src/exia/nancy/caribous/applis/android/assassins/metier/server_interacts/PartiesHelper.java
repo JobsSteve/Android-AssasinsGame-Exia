@@ -33,6 +33,7 @@ public class PartiesHelper {
 		
 		try
 		{
+			argumentsOfRequest.put("txtDateFin", "06/06/06"); 
 			if (pub)
 			argumentsOfRequest.put("cbPrive", "on"); 
 			
